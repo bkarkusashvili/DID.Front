@@ -1,0 +1,32 @@
+#header {
+  background-color: #49365d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    cursor: pointer;
+
+    img {
+      width: 170px;
+      height: 46px;
+    }
+  }
+
+  select {
+    width: 55px;
+    height: 20px;
+    outline: 0px;
+    border: 0;
+    background: none;
+    font-family: "Roboto";
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 21px;
+
+    option {
+      background-color: #49365d;
+    }
+  }
+}

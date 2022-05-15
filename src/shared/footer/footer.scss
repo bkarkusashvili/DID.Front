@@ -1,0 +1,41 @@
+#footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #49365d;
+  .icons {
+    display: flex;
+    i {
+      color: #707070;
+      font-size: 30px;
+      margin-right: 37px;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  .terms {
+    display: flex;
+    ul {
+      display: flex;
+
+      li {
+        margin-right: 75px;
+        a {
+          font-family: "Helvetica";
+          font-weight: 400;
+          font-size: 18px;
+          color: #707070;
+          text-decoration: none;
+        }
+      }
+    }
+    span {
+      font-family: "Helvetica";
+      font-weight: 400;
+      font-size: 18px;
+      color: #707070;
+      text-decoration: none;
+    }
+  }
+}
