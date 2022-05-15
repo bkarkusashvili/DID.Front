@@ -73,7 +73,7 @@
           height: 25px;
           background-repeat: no-repeat;
           display: flex;
-          background-image: url("../../assets/logoGoogle.svg");
+          background-image: url("../../../assets//logoGoogle.svg");
         }
         &:nth-child(2)::before {
           content: "";
@@ -81,7 +81,7 @@
           height: 25px;
           background-repeat: no-repeat;
           display: flex;
-          background-image: url("../../assets/logoFb.svg");
+          background-image: url("../../../assets/logoFb.svg");
         }
         &:nth-child(3)::before {
           content: "";
@@ -89,7 +89,7 @@
           height: 25px;
           background-repeat: no-repeat;
           display: flex;
-          background-image: url("../../assets/logoApple.svg");
+          background-image: url("../../../assets/logoApple.svg");
         }
       }
       a {
