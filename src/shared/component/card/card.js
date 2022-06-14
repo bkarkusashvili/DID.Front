@@ -1,31 +1,26 @@
 import * as React from "react";
-import img from "../../../assets/cover.jpg";
-import {
-  Button,
-  Typography,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Card,
-} from "@material-ui/core";
+import img from "../../../assets/cover.png";
+import "./card.scss";
 
 function card() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" alt="green iguana" height="140" image={img} />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Accounting & Financial Services
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          domain.com
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Edit</Button>
-        <Button size="small">Submit</Button>
-      </CardActions>
-    </Card>
+    <div className="card">
+      <div className="top">
+        <h2>Website - 20.06.2022</h2>
+        <div className="imgwraper">
+          <img src={img}></img>
+          <span>status</span>
+        </div>
+      </div>
+      <div className="bottom">
+        <p>Accounting & Financial Services</p>
+        <span>domain.com</span>
+        <div className="buttons">
+          <button>Edit</button>
+          <button>Submit</button>
+        </div>
+      </div>
+    </div>
   );
 }
 
