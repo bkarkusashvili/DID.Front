@@ -1,11 +1,18 @@
 #loginedPage {
   padding: 92px 200px 154px 200px;
 
+  @media screen and (max-width: 1700px) {
+    padding: 50px 70px;
+  }
+
   .contentcontrol {
     display: flex;
     justify-content: space-between;
     .newpost {
-      display: flex;
+      display: grid;
+      grid-template-columns: 268px 268px 268px auto 170px;
+      gap: 20px;
+      width: 100%;
 
       > button::before {
         width: 13px;
@@ -13,7 +20,7 @@
         margin-right: 20px;
         content: url(../../../assets/plusicon.png);
       }
-      button {
+      > button {
         font-size: 16px;
         font-weight: bold;
         padding: 20px 0;
@@ -22,43 +29,92 @@
         align-items: center;
         color: #ffffff;
         border-radius: 12px;
-        min-width: 270px;
         line-height: 21px;
         border: none;
         cursor: pointer;
+        font-weight: 800;
 
         &:nth-child(1) {
-          margin-right: 20px;
           background-color: #06c97e;
+
+          &:hover {
+            background-color: #0de18f;
+          }
         }
         &:nth-child(2) {
-          margin-right: 20px;
           background-color: #552f7c;
+          &:hover {
+            background-color: #7941b2;
+          }
+        }
+        &:nth-child(3) {
+          background-color: #ff9002;
+
+          &:hover {
+            background-color: #ffab02;
+          }
         }
       }
     }
   }
-  .search {
+  form {
     display: flex;
     justify-content: space-between;
-    button {
+    border-radius: 12px;
+
+    input {
       background-color: #f5f3f6;
       padding: 20px;
-      border-radius: 12px;
       border: none;
-      cursor: pointer;
       display: flex;
       align-items: center;
-      min-width: 500px;
-      width: auto;
+      outline: none;
+      font-size: 16px;
+      float: left;
+      width: 80%;
+      border-radius: 12px 0 0 12px;
+      cursor: pointer;
+    }
+    button {
+      float: left;
+      width: 20%;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      border-radius: 0 12px 12px 0;
+      background-color: #06c97e;
+      padding: 20px 0;
+    }
+
+    &::after {
+      content: "";
+      clear: both;
     }
   }
+  select {
+    border-radius: 12px;
+    border: 1px solid #552f7c;
+    padding: 20px 0;
+    outline: none;
+    appearance: none;
+    font-size: 16px;
+    color: #552f7c;
+    line-height: 20px;
+    background: url(../../../assets/arrow.png);
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
+    text-align: center;
+    cursor: pointer;
+  }
   .posttype {
-    display: flex;
     border: 1px solid #f5f3f6;
     border-left: none;
     border-right: none;
-    margin-top: 60px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    margin-top: 76px;
 
     > button::before {
       width: 24px;
@@ -76,18 +132,17 @@
       justify-content: center;
       align-items: center;
       padding: 15px 0;
-      min-width: 268px;
-      margin-left: 40px;
       cursor: pointer;
+      text-transform: capitalize;
+      font-weight: 500;
 
-      &:hover {
+      &:hover,
+      &.active {
         background-color: #f5f3f6;
         border-radius: 12px;
       }
 
       &:nth-child(1) {
-        margin-left: 0;
-
         &::before {
           content: url(../../../assets/webicon.png);
         }
@@ -105,6 +160,16 @@
       &:nth-child(4) {
         &::before {
           content: url(../../../assets/twiticon.png);
+        }
+      }
+      &:nth-child(5) {
+        &::before {
+          content: url(../../../assets/linkicon.png);
+        }
+      }
+      &:nth-child(6) {
+        &::before {
+          content: url(../../../assets/editicon.png);
         }
       }
     }
