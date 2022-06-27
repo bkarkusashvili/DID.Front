@@ -1,25 +1,25 @@
-import React from "react";
-import "./form.scss";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import { TextField, Button, Checkbox } from "@material-ui/core";
+import React from 'react';
+import './form.scss';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { TextField, Button, Checkbox } from '@material-ui/core';
 
 const validationSchema = yup.object({
   email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
+    .string('Enter your email')
+    .email('Enter a valid email')
+    .required('Email is required'),
   password: yup
-    .string("Enter your password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
+    .string('Enter your password')
+    .min(8, 'Password should be of minimum 8 characters length')
+    .required('Password is required'),
 });
 
-const Form = ({ title }) => {
+export const Form = ({ title }) => {
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      email: '',
+      password: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -72,7 +72,6 @@ const Form = ({ title }) => {
         />
         <div className="remmember-password">
           <div>
-            <Checkbox />
             <span className="remmember-me">Remember me</span>
           </div>
           <span>
@@ -101,5 +100,3 @@ const Form = ({ title }) => {
     </div>
   );
 };
-
-export default Form;

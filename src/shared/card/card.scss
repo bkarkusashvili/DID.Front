@@ -55,7 +55,7 @@
       color: #4b4b4b;
 
       &::after {
-        content: "";
+        content: '';
         border-bottom: 1px solid #06c97e;
         padding-top: 7px;
         display: flex;
@@ -88,12 +88,12 @@
             color: #fff;
 
             &::before {
-              content: url(../../../assets/edit.svg);
+              content: url(/assets/svg/edit.svg);
             }
           }
 
           &::before {
-            content: url(../../../assets/edit.png);
+            content: url(/assets/images/edit.png);
             width: 20px;
             height: 20px;
             margin-right: 20px;
@@ -106,11 +106,11 @@
             color: #fff;
 
             &::before {
-              content: url(../../../assets/check.svg);
+              content: url(/assets/svg/check.svg);
             }
           }
           &::before {
-            content: url(../../../assets/check.png);
+            content: url(/assets/images/check.png);
             width: 20px;
             height: 20px;
             margin-right: 20px;

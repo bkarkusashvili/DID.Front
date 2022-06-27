@@ -1,16 +1,15 @@
-import React from "react";
-import Header from "../../shared/header/header";
-import Footer from "../../shared/footer/footer";
-import "./mainLayout.scss";
+import React from 'react';
+import { Header } from '../header/header';
+import { Footer } from '../footer/footer';
 
-const Mainlayout = ({ children }) => {
+import './mainLayout.scss';
+
+export const Mainlayout = ({ children }) => {
   return (
     <div id="container">
-      <Header></Header>
+      <Header />
       <main> {children} </main>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
-
-export default Mainlayout;

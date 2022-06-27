@@ -1,4 +1,4 @@
-#loginedPage {
+#dashboard {
   padding: 92px 200px 154px 200px;
 
   @media screen and (max-width: 1700px) {
@@ -18,7 +18,7 @@
         width: 13px;
         height: auto;
         margin-right: 20px;
-        content: url(../../../assets/plusicon.png);
+        content: url(/assets/images/plusicon.png);
       }
       > button {
         font-size: 16px;
@@ -87,7 +87,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       clear: both;
     }
   }
@@ -100,7 +100,7 @@
     font-size: 16px;
     color: #552f7c;
     line-height: 20px;
-    background: url(../../../assets/arrow.png);
+    background: url(/assets/images/arrow.png);
     background-repeat: no-repeat;
     background-position: 20% 50%;
     text-align: center;
@@ -144,32 +144,32 @@
 
       &:nth-child(1) {
         &::before {
-          content: url(../../../assets/webicon.png);
+          content: url(/assets/images/webicon.png);
         }
       }
       &:nth-child(2) {
         &::before {
-          content: url(../../../assets/fbicon.png);
+          content: url(/assets/images/fbicon.png);
         }
       }
       &:nth-child(3) {
         &::before {
-          content: url(../../../assets/insticon.png);
+          content: url(/assets/images/insticon.png);
         }
       }
       &:nth-child(4) {
         &::before {
-          content: url(../../../assets/twiticon.png);
+          content: url(/assets/images/twiticon.png);
         }
       }
       &:nth-child(5) {
         &::before {
-          content: url(../../../assets/linkicon.png);
+          content: url(/assets/images/linkicon.png);
         }
       }
       &:nth-child(6) {
         &::before {
-          content: url(../../../assets/editicon.png);
+          content: url(/assets/images/editicon.png);
         }
       }
     }

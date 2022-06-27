@@ -1,11 +1,12 @@
-import React from "react";
-import "./header.scss";
-import logo from "../../assets/logo.png";
+import React from 'react';
 
-const header = () => {
+import './header.scss';
+import logo from '../../assets/images/logo.png';
+
+export const Header = () => {
   return (
     <header id="header">
-      <a src="#">
+      <a href="#">
         <img src={logo} alt="didge logo" />
       </a>
       <select>
@@ -15,5 +16,3 @@ const header = () => {
     </header>
   );
 };
-
-export default header;

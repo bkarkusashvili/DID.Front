@@ -1,0 +1,28 @@
+#auth {
+  background-color: #552f7c;
+  padding: 82px 123px 82px 165px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .form {
+    margin-right: 120px;
+  }
+
+  .formLayout {
+    width: 555px;
+    background-color: #fafafc;
+    padding: 47px 45px 72px;
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    h1 {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #552f7c;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eeecf1;
+    }
+  }
+}

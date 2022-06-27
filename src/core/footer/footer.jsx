@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import "./footer.scss";
+import React from 'react';
 
-const footer = () => {
+import './footer.scss';
+
+export const Footer = () => {
   return (
     <footer id="footer">
       <ul className="icons">
@@ -44,5 +44,3 @@ const footer = () => {
     </footer>
   );
 };
-
-export default footer;

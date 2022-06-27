@@ -1,8 +1,8 @@
-import * as React from "react";
-import img from "../../../assets/cover.png";
-import "./card.scss";
+import * as React from 'react';
+import img from '../../assets/images/cover.png';
+import './card.scss';
 
-function card({ color, title }) {
+export const Card = ({ color, title }) => {
   return (
     <div className="card">
       <div className="top">
@@ -22,6 +22,4 @@ function card({ color, title }) {
       </div>
     </div>
   );
-}
-
-export default card;
+};
