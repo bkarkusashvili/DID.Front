@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Remember.scss';
 
-export const Remember = () => {
+export const Remember = ({ hasReset }) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ export const Remember = () => {
         <i></i>
         Remember me
       </span>
-      <Link to="/reset" children="Forgot your password?" />
+      {hasReset && <Link to="/reset" children="Forgot your password?" />}
     </div>
   );
 };
