@@ -3,6 +3,10 @@
   display: flex;
   position: relative;
   padding: 225px 394px 317px 202px;
+
+  @media screen and (max-width: 1600px) {
+    padding: 200px 50px;
+  }
   .leftContent {
     display: flex;
     flex-direction: column;
