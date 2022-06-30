@@ -1,7 +1,7 @@
 import { Mainlayout } from "./core";
 import { Routes, Route } from "react-router-dom";
 
-import { Dashboard, Auth, Main } from "./feature";
+import { Dashboard, Auth, Main, Terms, Policy } from "./feature";
 
 import "./main.scss";
 
@@ -14,6 +14,8 @@ function App() {
           <Route path="login" element={<Auth type="login" />} />
           <Route path="register" element={<Auth type="register" />} />
           <Route path="/" element={<Main type="main" />} />
+          <Route path="/terms" element={<Terms type="terms" />} />
+          <Route path="/policy" element={<Policy type="policy" />} />
         </Routes>
       </div>
     </Mainlayout>

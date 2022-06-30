@@ -14,7 +14,7 @@ export const Main = () => {
           Artificial Intelligence that helps you generate and optimize content
           for social media and websites
         </p>
-        <button>Get started</button>
+        <a href="/register">Get started</a>
       </div>
       <div className="list">
         <span>Social media content</span>

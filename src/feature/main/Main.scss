@@ -2,7 +2,7 @@
   background-color: #552f7c;
   display: flex;
   position: relative;
-  padding: 225px 394px 317px 202px;
+  padding: 225px 50px 317px 50px;
 
   @media screen and (max-width: 1600px) {
     padding: 200px 50px;
@@ -30,7 +30,7 @@
       max-width: 405px;
       margin: 44px 0;
     }
-    button {
+    a {
       background-color: #06c97e;
       border: none;
       outline: none;
@@ -41,6 +41,8 @@
       cursor: pointer;
       font-weight: 500;
       font-size: 16px;
+      text-align: center;
+      text-decoration: none;
 
       &:hover {
         background-color: #0de18f;
