@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import './Dashboard.scss';
+import "./Dashboard.scss";
 
-import { Card } from '../../shared';
-import search from '../../assets/images/search.png';
+import { Card } from "../../shared";
+import search from "../../assets/images/search.png";
 
 const post = [
   {
-    title: 'Website',
-    type: 'website',
-    color: '#552F7C',
+    title: "Website",
+    type: "website",
+    color: "#552F7C",
   },
   {
-    title: 'facebook',
-    type: 'facebook',
-    color: '#1877F1',
+    title: "facebook",
+    type: "facebook",
+    color: "#1877F1",
   },
   {
-    title: 'instagram',
-    type: 'instagram',
-    color: '#D7145A',
+    title: "instagram",
+    type: "instagram",
+    color: "#D7145A",
   },
   {
-    title: 'Twitter',
-    type: 'twitter',
-    color: '#1d9bf0',
+    title: "Twitter",
+    type: "twitter",
+    color: "#1d9bf0",
   },
   {
-    title: 'linkedin',
-    type: 'linkedin',
-    color: '#0077B5',
+    title: "linkedin",
+    type: "linkedin",
+    color: "#0077B5",
   },
 
   {
-    title: 'Blog',
-    type: 'blog',
-    color: '#FF8033',
+    title: "Blog",
+    type: "blog",
+    color: "#FF8033",
   },
 ];
 
@@ -52,9 +52,10 @@ export const Dashboard = () => {
     <div id="dashboard">
       <div className="contentcontrol">
         <div className="newpost">
-          <button>Social media poster</button>
-          <button>New Site</button>
-          <button>New Blog</button>
+          <button>Social</button>
+          <button>Site</button>
+          <button>Blog</button>
+          <button>NFT</button>
           <form>
             <input placeholder="Search" />
             <button type="submit">
@@ -62,9 +63,11 @@ export const Dashboard = () => {
             </button>
           </form>
           <select>
-            <option>Sort by</option>
-            <option>Sort by1</option>
-            <option>Sort by2</option>
+            <option>Sort By</option>
+            <option>Social</option>
+            <option>Site</option>
+            <option>Blog</option>
+            <option>NFT</option>
           </select>
         </div>
         <div className="search"></div>
@@ -74,8 +77,8 @@ export const Dashboard = () => {
           <button
             key={key}
             type={el.type}
-            onClick={() => setType(el.type === type ? '' : el.type)}
-            className={el.type === type ? 'active' : ''}
+            onClick={() => setType(el.type === type ? "" : el.type)}
+            className={el.type === type ? "active" : ""}
             children={el.title}
           />
         ))}
