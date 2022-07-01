@@ -1,0 +1,23 @@
+#terms {
+  display: flex;
+  flex-direction: column;
+  background-color: #552f7c;
+  padding: 100px 50px;
+  h2 {
+    font-size: 49px;
+    font-weight: bold;
+    line-height: 59px;
+    color: #06c97e;
+  }
+  ul {
+    margin-top: 40px;
+    max-width: 80%;
+    li {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      margin-top: 15px;
+    }
+  }
+}

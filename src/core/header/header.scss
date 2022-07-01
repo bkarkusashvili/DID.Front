@@ -1,8 +1,9 @@
 #header {
-  background-color: #49365d;
+  background-color: #552f7c;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #ffffff;
 
   a {
     cursor: pointer;
@@ -27,6 +28,30 @@
 
     option {
       background-color: #49365d;
+    }
+  }
+  .loginControl {
+    div {
+      display: flex;
+      align-items: center;
+      a {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+        padding: 20px;
+        border: none;
+        outline: none;
+        background-color: #ffffff;
+        border-radius: 12px;
+        color: #552f7c;
+        text-decoration: none;
+      }
+      .logbtn {
+        background-color: transparent;
+        color: #06c97e;
+        margin-right: 40px;
+        padding: 0;
+      }
     }
   }
 }
