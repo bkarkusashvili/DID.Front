@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import './Auth.scss';
 
 import { Remember, SocialLogin } from './components';
+import { API } from '../../env';
+import { useEffect } from 'react';
 
 const form = {
   login: [
@@ -15,7 +18,6 @@ const form = {
       name: 'email',
       label: 'Email',
       type: 'email',
-      // validate: yup.email('Enter a valid email').required('Email is required'),
     },
     {
       name: 'password',
@@ -52,20 +54,90 @@ const form = {
   ],
 };
 
-export const Auth = ({ type }) => {
+const validationSchema = {
+  login: yup.object({
+    email: yup
+      .string()
+      .required('Email is required')
+      .email('Enter a valid email'),
+    password: yup
+      .string()
+      .required('Password is required')
+      .min(8, 'Password should be of minimum 8 characters length'),
+  }),
+  register: yup.object({
+    firstname: yup.string().required('Firstname is required'),
+    lastname: yup.string().required('Lastname is required'),
+    email: yup
+      .string()
+      .required('Email is required')
+      .email('Enter a valid email'),
+    password: yup
+      .string()
+      .required('Password is required')
+      .min(8, 'Password should be of minimum 8 characters length'),
+    password_confirmation: yup
+      .string()
+      .required('Password is required')
+      .min(8, 'Password should be of minimum 8 characters length')
+      .oneOf([yup.ref('password'), null], 'Passwords must match'),
+  }),
+};
+
+export const Auth = ({ type, updateToken }) => {
   const isLogin = useMemo(() => type === 'login', [type]);
   const isRegister = useMemo(() => type === 'register', [type]);
   const title = useMemo(
     () => (isLogin ? 'Log into system' : 'Create your account'),
-    [type]
+    [isLogin]
   );
+  const navigate = useNavigate();
 
-  const { handleChange, handleBlur, handleSubmit } = useFormik({
+  const onSubmit = (data, helper) => {
+    axios
+      .post(API + type, data)
+      .then((res) => {
+        updateToken(res.data.plainTextToken);
+        navigate('/dashboard');
+      })
+      .catch((err) => {
+        const res = err.response;
+
+        if (res.status === 422) {
+          const errors = res.data.errors;
+
+          Object.keys(errors).forEach((key) =>
+            helper.setFieldError(key, errors[key])
+          );
+        }
+      });
+  };
+
+  const {
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    errors,
+    touched,
+    setTouched,
+    values,
+    setValues,
+    setErrors,
+  } = useFormik({
     initialValues: {},
-    // validationSchema:
+    onSubmit,
+    validationSchema: validationSchema[type],
   });
 
-  const submit = () => {};
+  const submit = (e) => {
+    setTouched();
+    handleSubmit(e);
+  };
+
+  useEffect(() => {
+    setValues({});
+    setErrors({});
+  }, [type]);
 
   return (
     <div id="auth">
@@ -81,6 +153,11 @@ export const Auth = ({ type }) => {
               name={item.name}
               type={item.type}
               label={item.label}
+              value={values[item.name] || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched[item.name] && errors[item.name]}
+              helperText={touched[item.name] && errors[item.name]}
             />
           ))}
         </div>
@@ -88,6 +165,7 @@ export const Auth = ({ type }) => {
         <button
           className={`submit ${type}`}
           onClick={submit}
+          type="submit"
           children={isRegister ? 'Get started' : 'Log in'}
         />
         <div className="other-option">

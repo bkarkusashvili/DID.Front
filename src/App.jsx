@@ -1,21 +1,48 @@
-import { Mainlayout } from "./core";
-import { Routes, Route } from "react-router-dom";
+import { useState } from 'react';
+import { Mainlayout, PrivateRoute, PublicRoute } from './core';
+import { Routes, Route } from 'react-router-dom';
 
-import { Dashboard, Auth, Main, Terms, Policy } from "./feature";
+import { Dashboard, Auth, Main, Terms, Policy } from './feature';
 
-import "./main.scss";
+import './main.scss';
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('token'));
+
+  const updateToken = (newToken) => {
+    localStorage.setItem('token', newToken);
+    setToken(newToken);
+  };
+
   return (
-    <Mainlayout>
+    <Mainlayout hasUser={!!token}>
       <div className="App">
         <Routes>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="login" element={<Auth type="login" />} />
-          <Route path="register" element={<Auth type="register" />} />
+          <Route
+            path="dashboard"
+            element={<PrivateRoute user={token} children={<Dashboard />} />}
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute
+                user={token}
+                children={<Auth type="login" updateToken={updateToken} />}
+              />
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <PublicRoute
+                user={token}
+                children={<Auth type="register" updateToken={updateToken} />}
+              />
+            }
+          />
           <Route path="/" element={<Main type="main" />} />
-          <Route path="/terms" element={<Terms type="terms" />} />
-          <Route path="/policy" element={<Policy type="policy" />} />
+          <Route path="terms" element={<Terms type="terms" />} />
+          <Route path="policy" element={<Policy type="policy" />} />
         </Routes>
       </div>
     </Mainlayout>

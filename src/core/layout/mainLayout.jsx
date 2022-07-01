@@ -4,10 +4,10 @@ import { Footer } from '../footer/footer';
 
 import './mainLayout.scss';
 
-export const Mainlayout = ({ children }) => {
+export const Mainlayout = ({ children, hasUser }) => {
   return (
     <div id="container">
-      <Header />
+      <Header hasUser={hasUser} />
       <main> {children} </main>
       <Footer />
     </div>

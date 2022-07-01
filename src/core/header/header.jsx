@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import "./header.scss";
-import logo from "../../assets/images/logo.png";
-import { useState } from "react";
+import './header.scss';
+import logo from '../../assets/images/logo.png';
 
-export const Header = () => {
-  const [login, setLogin] = useState(false);
+export const Header = ({ hasUser }) => {
   return (
     <header id="header">
       <a href="/">
@@ -16,7 +14,7 @@ export const Header = () => {
         <option value="GE">GE</option>
       </select> */}
       <div className="loginControl">
-        {login ? (
+        {hasUser ? (
           <div>
             <a href="/">Logout</a>
           </div>
