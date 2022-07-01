@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/autoplay";
 
 import "./Dashboard.scss";
 
@@ -72,9 +76,17 @@ export const Dashboard = () => {
         </div>
         <div className="search"></div>
       </div>
-      <div className="posttype">
+      <Swiper
+        className="posttype"
+        modules={[Autoplay]}
+        spaceBetween={50}
+        slidesPerView={3}
+        autoplay={{ delay: 2000 }}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
         {post.map((el, key) => (
-          <button
+          <SwiperSlide
             key={key}
             type={el.type}
             onClick={() => setType(el.type === type ? "" : el.type)}
@@ -82,7 +94,7 @@ export const Dashboard = () => {
             children={el.title}
           />
         ))}
-      </div>
+      </Swiper>
       <div className="grid-container">
         {list.map((el, key) => (
           <Card key={key} color={el.color} title={el.title} />
