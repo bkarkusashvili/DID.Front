@@ -1,0 +1,87 @@
+#mainpage {
+  background-color: #552f7c;
+  display: flex;
+  position: relative;
+  padding: 225px 50px 317px 50px;
+
+  @media screen and (max-width: 1600px) {
+    padding: 200px 50px;
+  }
+  .leftContent {
+    display: flex;
+    flex-direction: column;
+    margin-right: 250px;
+    span {
+      font-weight: bold;
+      line-height: 59px;
+      font-size: 49px;
+      color: #06c97e;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        color: #ffffff;
+      }
+    }
+    p {
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 22px;
+      max-width: 405px;
+      margin: 44px 0;
+    }
+    a {
+      background-color: #06c97e;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      color: #ffffff;
+      padding: 20px;
+      max-width: 268px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #0de18f;
+      }
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    span {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #ffffff;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ffffff;
+      padding: 23px 20px 23px 20px;
+      border-radius: 12px;
+      background-color: rgba(185, 40, 245, 0.3);
+      backdrop-filter: blur(30px) brightness(115%);
+      z-index: 2;
+
+      &::before {
+        content: url(../../assets/svg/check.svg);
+        background-color: #06c97e;
+        padding: 10px;
+        border-radius: 50%;
+        margin-right: 12px;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+}

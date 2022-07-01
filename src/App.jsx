@@ -1,9 +1,9 @@
-import { Mainlayout } from './core';
-import { Routes, Route } from 'react-router-dom';
+import { Mainlayout } from "./core";
+import { Routes, Route } from "react-router-dom";
 
-import { Dashboard, Auth } from './feature';
+import { Dashboard, Auth, Main, Terms, Policy } from "./feature";
 
-import './main.scss';
+import "./main.scss";
 
 function App() {
   return (
@@ -13,6 +13,9 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="login" element={<Auth type="login" />} />
           <Route path="register" element={<Auth type="register" />} />
+          <Route path="/" element={<Main type="main" />} />
+          <Route path="/terms" element={<Terms type="terms" />} />
+          <Route path="/policy" element={<Policy type="policy" />} />
         </Routes>
       </div>
     </Mainlayout>
