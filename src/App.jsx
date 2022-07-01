@@ -1,7 +1,7 @@
 import { Mainlayout } from "./core";
 import { Routes, Route } from "react-router-dom";
 
-import { Dashboard, Auth, Main, Terms, Policy } from "./feature";
+import { Dashboard, Auth, Main, Terms, Policy, Edit } from "./feature";
 
 import "./main.scss";
 
@@ -11,11 +11,12 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="edit" element={<Edit />} />
           <Route path="login" element={<Auth type="login" />} />
           <Route path="register" element={<Auth type="register" />} />
           <Route path="/" element={<Main type="main" />} />
-          <Route path="/terms" element={<Terms type="terms" />} />
-          <Route path="/policy" element={<Policy type="policy" />} />
+          <Route path="terms" element={<Terms type="terms" />} />
+          <Route path="policy" element={<Policy type="policy" />} />
         </Routes>
       </div>
     </Mainlayout>

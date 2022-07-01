@@ -2,7 +2,11 @@
   padding: 92px 200px 154px 200px;
 
   @media screen and (max-width: 1700px) {
-    padding: 50px 70px;
+    padding: 50px 50px;
+  }
+
+  @media screen and (max-width: 1060px) {
+    padding: 50px 30px;
   }
 
   .contentcontrol {
@@ -13,6 +17,13 @@
       grid-template-columns: 200px 200px 200px 200px auto 170px;
       gap: 20px;
       width: 100%;
+
+      @media screen and (max-width: 1300px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      @media screen and (max-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+      }
 
       > button::before {
         width: 13px;
@@ -80,6 +91,12 @@
     display: flex;
     justify-content: space-between;
     border-radius: 12px;
+    @media screen and (max-width: 1300px) {
+      grid-column: span 2;
+    }
+    @media screen and (max-width: 800px) {
+      grid-column: span 1;
+    }
 
     input {
       background-color: #f5f3f6;
@@ -124,24 +141,30 @@
     background-position: 20% 50%;
     text-align: center;
     cursor: pointer;
+    @media screen and (max-width: 1300px) {
+      max-width: 150px;
+    }
   }
   .posttype {
     border: 1px solid #f5f3f6;
     border-left: none;
     border-right: none;
-
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
     margin-top: 76px;
 
-    > button::before {
+    .swiper-wrapper {
+      align-items: center;
+    }
+
+    .swiper-slide::before {
       width: 24px;
       height: 24px;
       padding-right: 15px;
     }
 
-    button {
+    .swiper-slide {
       font-size: 18px;
       background: transparent;
       border: none;
@@ -159,6 +182,7 @@
       &.active {
         background-color: #f5f3f6;
         border-radius: 12px;
+        height: auto;
       }
 
       &:nth-child(1) {
@@ -198,6 +222,16 @@
     grid-template-columns: auto auto auto auto;
     gap: 20px;
     margin-top: 76px;
+
+    @media screen and (max-width: 1300px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 960px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (max-width: 960px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 @keyframes animate {
