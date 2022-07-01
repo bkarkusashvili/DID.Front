@@ -1,6 +1,7 @@
 import React from "react";
 import "./Main.scss";
 import bgimg from "../../assets/images/mainBG.png";
+import { Link } from "react-router-dom";
 
 export const Main = () => {
   return (
@@ -14,7 +15,7 @@ export const Main = () => {
           Artificial Intelligence that helps you generate and optimize content
           for social media and websites
         </p>
-        <a href="/register">Get started</a>
+        <Link to="/register">Get started</Link>
       </div>
       <div className="list">
         <span>Social media content</span>

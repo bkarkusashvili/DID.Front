@@ -11,6 +11,10 @@
     img {
       width: 170px;
       height: 46px;
+      @media screen and (max-width: 1060px) {
+        width: 120px;
+        height: auto;
+      }
     }
   }
 
@@ -51,6 +55,9 @@
         color: #06c97e;
         margin-right: 40px;
         padding: 0;
+        @media screen and (max-width: 1060px) {
+          margin-right: 20px;
+        }
       }
     }
   }

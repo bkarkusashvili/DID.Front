@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Mainlayout, PrivateRoute, PublicRoute } from './core';
 import { Routes, Route } from 'react-router-dom';
 
-import { Dashboard, Auth, Main, Terms, Policy } from './feature';
+import { Dashboard, Auth, Main, Terms, Policy, Edit } from './feature';
 
 import './main.scss';
 
@@ -21,6 +21,10 @@ function App() {
           <Route
             path="dashboard"
             element={<PrivateRoute user={token} children={<Dashboard />} />}
+          />
+          <Route
+            path="edit"
+            element={<PrivateRoute user={token} children={<Edit />} />}
           />
           <Route
             path="login"

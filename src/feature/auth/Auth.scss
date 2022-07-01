@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: space-around;
 
+  @media screen and (max-width: 800px) {
+    padding: 30px 10px;
+  }
+
   .form {
     margin-bottom: 12px;
 
@@ -23,6 +27,9 @@
     padding: 47px 45px 72px;
     border-radius: 12px;
     box-sizing: border-box;
+    @media screen and (max-width: 800px) {
+      padding: 30px 10px;
+    }
 
     h1 {
       font-weight: bold;
