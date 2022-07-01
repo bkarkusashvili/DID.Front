@@ -3,14 +3,15 @@ import React from "react";
 import "./header.scss";
 import logo from "../../assets/images/logo.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [login, setLogin] = useState(false);
   return (
     <header id="header">
-      <a href="/">
+      <Link to="/">
         <img src={logo} alt="didge logo" />
-      </a>
+      </Link>
       {/* <select>
         <option value="ENG">ENG</option>
         <option value="GE">GE</option>
@@ -18,14 +19,14 @@ export const Header = () => {
       <div className="loginControl">
         {login ? (
           <div>
-            <a href="/">Logout</a>
+            <Link to="/">Logout</Link>
           </div>
         ) : (
           <div>
-            <a className="logbtn" href="/login">
+            <Link className="logbtn" to="/login">
               Log In
-            </a>
-            <a href="register">Sign up</a>
+            </Link>
+            <Link to="register">Sign up</Link>
           </div>
         )}
       </div>

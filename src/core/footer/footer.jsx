@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 
 import "./footer.scss";
@@ -33,10 +34,10 @@ export const Footer = () => {
       <div className="terms">
         <ul>
           <li>
-            <a href="/terms">terms and conditions</a>
+            <Link to="/terms">terms and conditions</Link>
           </li>
           <li>
-            <a href="/policy">privacy policy</a>
+            <Link to="/policy">privacy policy</Link>
           </li>
         </ul>
         <span>© Untitled. All rights reserved</span>
