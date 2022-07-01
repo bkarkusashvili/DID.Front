@@ -66,13 +66,13 @@ export const Dashboard = () => {
               <img src={search}></img>
             </button>
           </form>
-          <select>
+          {/* <select>
             <option>Sort By</option>
             <option>Social</option>
             <option>Site</option>
             <option>Blog</option>
             <option>NFT</option>
-          </select>
+          </select> */}
         </div>
         <div className="search"></div>
       </div>
