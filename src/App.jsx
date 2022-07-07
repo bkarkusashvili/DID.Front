@@ -27,6 +27,10 @@ function App() {
             element={<PrivateRoute user={token} children={<Edit />} />}
           />
           <Route
+            path="create/:type"
+            element={<PrivateRoute user={token} children={<Edit />} />}
+          />
+          <Route
             path="login"
             element={
               <PublicRoute
@@ -44,7 +48,12 @@ function App() {
               />
             }
           />
-          <Route path="/" element={<Main type="main" />} />
+          <Route
+            path="/"
+            element={
+              <PublicRoute user={token} children={<Main type="main" />} />
+            }
+          />
           <Route path="terms" element={<Terms type="terms" />} />
           <Route path="policy" element={<Policy type="policy" />} />
         </Routes>

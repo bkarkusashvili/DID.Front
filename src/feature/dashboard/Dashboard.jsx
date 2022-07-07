@@ -1,45 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/autoplay";
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
+import { Autoplay } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/autoplay';
 
-import "./Dashboard.scss";
+import './Dashboard.scss';
 
-import { Card } from "../../shared";
-import search from "../../assets/images/search.png";
+import { Card } from '../../shared';
+import search from '../../assets/images/search.png';
 
 const post = [
   {
-    title: "Website",
-    type: "website",
-    color: "#552F7C",
+    title: 'Website',
+    type: 'website',
+    color: '#552F7C',
   },
   {
-    title: "facebook",
-    type: "facebook",
-    color: "#1877F1",
+    title: 'facebook',
+    type: 'facebook',
+    color: '#1877F1',
   },
   {
-    title: "instagram",
-    type: "instagram",
-    color: "#D7145A",
+    title: 'instagram',
+    type: 'instagram',
+    color: '#D7145A',
   },
   {
-    title: "Twitter",
-    type: "twitter",
-    color: "#1d9bf0",
+    title: 'Twitter',
+    type: 'twitter',
+    color: '#1d9bf0',
   },
   {
-    title: "linkedin",
-    type: "linkedin",
-    color: "#0077B5",
+    title: 'linkedin',
+    type: 'linkedin',
+    color: '#0077B5',
   },
 
   {
-    title: "Blog",
-    type: "blog",
-    color: "#FF8033",
+    title: 'Blog',
+    type: 'blog',
+    color: '#FF8033',
   },
 ];
 
@@ -56,10 +57,10 @@ export const Dashboard = () => {
     <div id="dashboard">
       <div className="contentcontrol">
         <div className="newpost">
-          <button>Social</button>
-          <button>Site</button>
-          <button>Blog</button>
-          <button>NFT</button>
+          <Link to="/create/social">Social</Link>
+          <Link to="/create/site">Site</Link>
+          <Link to="/create/blog">Blog</Link>
+          <Link to="/create/nft">NFT</Link>
           <form>
             <input placeholder="Search" />
             <button type="submit">
@@ -82,15 +83,15 @@ export const Dashboard = () => {
         spaceBetween={50}
         slidesPerView={3}
         autoplay={{ delay: 2000 }}
-        onSlideChange={() => console.log("slide change")}
+        onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
       >
         {post.map((el, key) => (
           <SwiperSlide
             key={key}
             type={el.type}
-            onClick={() => setType(el.type === type ? "" : el.type)}
-            className={el.type === type ? "active" : ""}
+            onClick={() => setType(el.type === type ? '' : el.type)}
+            className={el.type === type ? 'active' : ''}
             children={el.title}
           />
         ))}
