@@ -1,4 +1,5 @@
 #auth {
+  flex: 1;
   background-color: #552f7c;
   padding: 82px 123px 82px 165px;
   display: flex;
@@ -54,12 +55,17 @@
       transition: all 0.3s;
       border-radius: 12px;
 
-      &.login {
+      &.login,
+      &.reset {
         background-color: #552f7c;
 
         &:hover {
           background-color: darken(#552f7c, 8);
         }
+      }
+
+      &.reset {
+        margin-bottom: 0;
       }
 
       &.register {
@@ -69,6 +75,14 @@
           background-color: darken(#06c97e, 8);
         }
       }
+    }
+
+    .notification {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #06c97e;
     }
 
     .other-option {

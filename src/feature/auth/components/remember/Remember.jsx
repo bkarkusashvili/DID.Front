@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Radio } from '../../../../shared';
 
 import './Remember.scss';
 
@@ -12,7 +13,7 @@ export const Remember = ({ hasReset }) => {
         className={isActive ? 'active' : ''}
         onClick={() => setIsActive(!isActive)}
       >
-        <i></i>
+        <Radio active={isActive} style={{ marginRight: 13 }} />
         Remember me
       </span>
       {hasReset && <Link to="/reset" children="Forgot your password?" />}

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -10,7 +10,6 @@ import './Auth.scss';
 
 import { Remember, SocialLogin } from './components';
 import { API } from '../../env';
-import { useEffect } from 'react';
 
 const form = {
   login: [
@@ -52,6 +51,13 @@ const form = {
       type: 'password',
     },
   ],
+  reset: [
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+    },
+  ],
 };
 
 const validationSchema = {
@@ -84,21 +90,39 @@ const validationSchema = {
   }),
 };
 
+const contents = {
+  login: {
+    title: 'Log into system',
+    button: 'Log in',
+  },
+  register: {
+    title: 'Create your account',
+    button: 'Get started',
+  },
+  reset: {
+    title: 'Reset your password',
+    button: 'Reset Password',
+  },
+};
+
 export const Auth = ({ type, updateToken }) => {
   const isLogin = useMemo(() => type === 'login', [type]);
   const isRegister = useMemo(() => type === 'register', [type]);
-  const title = useMemo(
-    () => (isLogin ? 'Log into system' : 'Create your account'),
-    [isLogin]
-  );
+  const isReset = useMemo(() => type === 'reset', [type]);
+  const content = useMemo(() => contents[type], [type]);
+  const [notification, setNotification] = useState();
   const navigate = useNavigate();
 
   const onSubmit = (data, helper) => {
     axios
       .post(API + type, data)
       .then((res) => {
-        updateToken(res.data.plainTextToken);
-        navigate('/dashboard');
+        if (!isReset) {
+          updateToken(res.data.plainTextToken);
+          navigate('/dashboard');
+        } else {
+          setNotification(res.data.status);
+        }
       })
       .catch((err) => {
         const res = err.response;
@@ -137,13 +161,14 @@ export const Auth = ({ type, updateToken }) => {
   useEffect(() => {
     setValues({});
     setErrors({});
+    setNotification('');
   }, [type]);
 
   return (
     <div id="auth">
       <div className="formLayout">
-        <h1 children={title} />
-        <SocialLogin />
+        <h1 children={content.title} />
+        {!isReset && <SocialLogin />}
         <div className="form">
           {form[type].map((item, key) => (
             <TextField
@@ -161,24 +186,30 @@ export const Auth = ({ type, updateToken }) => {
             />
           ))}
         </div>
-        <Remember hasReset={isLogin} />
+        {!isReset && <Remember hasReset={isLogin} />}
         <button
           className={`submit ${type}`}
           onClick={submit}
           type="submit"
-          children={isRegister ? 'Get started' : 'Log in'}
+          children={content.button}
         />
-        <div className="other-option">
-          {isRegister ? (
-            <>
-              Already have an account? <Link to="/login" children="Log in" />
-            </>
-          ) : (
-            <>
-              Don't have an account? <Link to="/register" children="Register" />
-            </>
-          )}
-        </div>
+        {isReset && notification && (
+          <span className="notification">{notification}</span>
+        )}
+        {!isReset && (
+          <div className="other-option">
+            {isRegister ? (
+              <>
+                Already have an account? <Link to="/login" children="Log in" />
+              </>
+            ) : (
+              <>
+                Don't have an account?{' '}
+                <Link to="/register" children="Register" />
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
