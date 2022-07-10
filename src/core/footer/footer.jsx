@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link } from 'react-router-dom';
+import React from 'react';
 
-import "./footer.scss";
+import './footer.scss';
 
 export const Footer = () => {
   return (
@@ -9,17 +9,17 @@ export const Footer = () => {
       <ul className="icons">
         <li>
           <a href="https://www.facebook.com/www.did.ge/" target="_blank">
-            <i class="fa-brands fa-facebook-square"></i>
+            <i className="fa-brands fa-facebook-square"></i>
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/did.ge_/" target="_blank">
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
           </a>
         </li>
         <li>
           <a href="https://twitter.com/www_did_ge/" target="_blank">
-            <i class="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
           </a>
         </li>
         <li>
@@ -27,7 +27,7 @@ export const Footer = () => {
             href="https://www.youtube.com/channel/UCXb66GQl0j9pycCzAxtr3WQ"
             target="_blank"
           >
-            <i class="fa-brands fa-youtube"></i>
+            <i className="fa-brands fa-youtube"></i>
           </a>
         </li>
       </ul>

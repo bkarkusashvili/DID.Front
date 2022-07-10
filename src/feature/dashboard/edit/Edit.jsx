@@ -1,8 +1,8 @@
-import React from "react";
-import save from "../../../assets/svg/check.svg";
-import { Button } from "../components/button/Button";
-import "./Edit.scss";
-import img from "../../../assets/images/img.png";
+import React from 'react';
+import save from '../../../assets/svg/check.svg';
+import { Button } from '../components/button/Button';
+import './Edit.scss';
+import img from '../../../assets/images/img.png';
 
 export const Edit = () => {
   return (
@@ -50,25 +50,25 @@ export const Edit = () => {
             <div>
               <h2>Generate Facebook post</h2>
               <div className="checkboxWrapper">
-                <label class="label">
+                <label className="label">
                   Apply Emojis
                   <input type="radio" checked="checked" name="radio" />
-                  <span class="checkmark"></span>
+                  <span className="checkmark"></span>
                 </label>
-                <label class="label">
+                <label className="label">
                   Apply Logo
                   <input type="radio" name="radio" />
-                  <span class="checkmark"></span>
+                  <span className="checkmark"></span>
                 </label>
-                <label class="label">
+                <label className="label">
                   Apply Branding Style
                   <input type="radio" name="radio" />
-                  <span class="checkmark"></span>
+                  <span className="checkmark"></span>
                 </label>
-                <label class="label">
+                <label className="label">
                   Generate Text on Photo
                   <input type="radio" name="radio" />
-                  <span class="checkmark"></span>
+                  <span className="checkmark"></span>
                 </label>
               </div>
             </div>

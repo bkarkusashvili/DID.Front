@@ -1,26 +1,53 @@
 import { useState } from 'react';
 import { Mainlayout, PrivateRoute, PublicRoute } from './core';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import { Dashboard, Auth, Main, Terms, Policy, Edit } from './feature';
 
 import './main.scss';
+import { API } from './env';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const navigate = useNavigate();
 
   const updateToken = (newToken) => {
-    localStorage.setItem('token', newToken);
+    if (newToken === null) {
+      localStorage.removeItem('token');
+    } else {
+      localStorage.setItem('token', newToken);
+    }
+
     setToken(newToken);
   };
 
+  const logout = () => {
+    axios
+      .post(API + 'logout', null, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        updateToken(null);
+        navigate('/');
+      })
+      .catch(() => {});
+  };
+
   return (
-    <Mainlayout hasUser={!!token}>
+    <Mainlayout hasUser={!!token} logout={logout}>
       <div className="App">
         <Routes>
           <Route
             path="dashboard"
-            element={<PrivateRoute user={token} children={<Dashboard />} />}
+            element={
+              <PrivateRoute
+                user={token}
+                children={
+                  <Dashboard token={token} logout={() => updateToken(null)} />
+                }
+              />
+            }
           />
           <Route
             path="edit"

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './header.scss';
 import logo from '../../assets/images/logo.png';
 
-export const Header = ({ hasUser }) => {
+export const Header = ({ hasUser, logout }) => {
   return (
     <header id="header">
       <Link to="/">
@@ -16,16 +16,12 @@ export const Header = ({ hasUser }) => {
       </select> */}
       <div className="loginControl">
         {hasUser ? (
-          <div>
-            <Link to="/">Logout</Link>
-          </div>
+          <button onClick={logout} children="Logout" />
         ) : (
-          <div>
-            <Link className="logbtn" to="/login">
-              Log In
-            </Link>
-            <Link to="register">Sign up</Link>
-          </div>
+          <>
+            <Link className="logbtn" to="/login" children="Log In" />
+            <Link to="register" children="Sign up" />
+          </>
         )}
       </div>
     </header>
