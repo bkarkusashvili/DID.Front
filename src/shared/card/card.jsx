@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+
 import img from '../../assets/images/cover.png';
 import './card.scss';
 
-export const Card = ({ color, title }) => {
+export const Card = ({ data, color }) => {
   return (
     <div className="card">
       <div className="top">
-        <h2 style={{ backgroundColor: color }}>{title} - 20.06.2022</h2>
+        <h2 style={{ backgroundColor: color }}>
+          {data.title} - {moment(data.created_at).format('DD.MM.YYYY')}
+        </h2>
         <div className="imgwraper">
-          <img src={img}></img>
+          <img src={img} alt="Social"></img>
           <span>status</span>
         </div>
       </div>
@@ -16,7 +21,7 @@ export const Card = ({ color, title }) => {
         <p>Accounting & Financial Services</p>
         <span>domain.com</span>
         <div className="buttons">
-          <button>Edit</button>
+          <Link to={`/edit/social/${data.id}`} children="Edit" />
           <button>Submit</button>
         </div>
       </div>

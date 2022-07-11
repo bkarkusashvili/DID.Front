@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import jsonToFormData from 'json-form-data';
@@ -26,6 +26,7 @@ export const CreateOrEdit = ({ token, logout }) => {
   const [suggestedPhotos, setSuggestedPhotos] = useState([]);
   const { type, id } = useParams();
   const isEdit = useMemo(() => !!id, [id]);
+  const navigate = useNavigate();
 
   const { values, handleChange, setFieldValue } = useFormik({
     initialValues: {},
@@ -41,6 +42,21 @@ export const CreateOrEdit = ({ token, logout }) => {
 
     axios
       .post(URL, jsonToFormData(data), { headers })
+      .then((res) => {
+        const id = res.data.id;
+
+        navigate(`/edit/${type}/${id}`);
+      })
+      .catch((err) => err.response.status === 401 && logout());
+  };
+
+  const deleteItem = () => {
+    const URL = `${API}${type}/delete/${id}`;
+    const headers = { Authorization: `Bearer ${token}` };
+
+    axios
+      .delete(URL, { headers })
+      .then(() => navigate(`/dashboard`))
       .catch((err) => err.response.status === 401 && logout());
   };
 
@@ -120,7 +136,13 @@ export const CreateOrEdit = ({ token, logout }) => {
             <button onClick={() => createOrUpdate(true)} />
           </div>
           <div className="actions">
-            {isEdit && <button className="btn delete" children="Delete" />}
+            {isEdit && (
+              <button
+                className="btn delete"
+                onClick={deleteItem}
+                children="Delete"
+              />
+            )}
             <button
               className="btn publish"
               onClick={() => createOrUpdate(false)}
