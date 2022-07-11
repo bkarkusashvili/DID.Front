@@ -79,19 +79,20 @@ export const CreateOrEdit = ({ token, logout }) => {
 
   const generateText = () => {
     if (!values.keywords || !values.keywords.length) return;
-
+    const headers = { Authorization: `Bearer ${token}` };
     setIsTextLoading(true);
 
     Promise.all([
       axios
-        .post(API + 'generate/text', { keywords: values.keywords })
+        .post(API + 'generate/text', { keywords: values.keywords }, { headers })
         .then((res) => setFieldValue('text', res.data)),
       axios
-        .post(API + 'generate/image', { keywords: values.keywords })
-        .then((res) => {
-          console.log(res.data);
-          setSuggestedPhotos(res.data);
-        }),
+        .post(
+          API + 'generate/image',
+          { keywords: values.keywords },
+          { headers }
+        )
+        .then((res) => setSuggestedPhotos(res.data)),
     ]).finally(() => setIsTextLoading(false));
   };
 
