@@ -70,7 +70,12 @@ export const Dashboard = ({ token, logout }) => {
       <div className="contentcontrol">
         <div className="newpost">
           <Link to="/create/social">Social</Link>
-          <Link to="https://xe8tbx8coxt.typeform.com/to/shpZNW5U">Site</Link>
+          <a
+            href="https://xe8tbx8coxt.typeform.com/to/shpZNW5U"
+            target="_blank"
+          >
+            Site
+          </a>
           <Link to="/create/blog">Blog</Link>
           <Link to="/create/nft">NFT</Link>
           <form>
