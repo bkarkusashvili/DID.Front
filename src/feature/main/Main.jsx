@@ -4,7 +4,7 @@ import bgimg from "../../assets/images/mainBG.png";
 import { Link } from "react-router-dom";
 import socialone from "../../assets/images/social-1.png";
 import socialtwo from "../../assets/images/social-2.png";
-import newsite from "../../assets/images/newsite.svg";
+import newsite from "../../assets/images/newsite.png";
 import branding from "../../assets/images/branding.png";
 import dashboard from "../../assets/images/dashboard.png";
 import { Formik, Form, Field } from "formik";
