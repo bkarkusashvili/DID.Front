@@ -6,8 +6,17 @@ import socialone from "../../assets/images/social-1.png";
 import socialtwo from "../../assets/images/social-2.png";
 import newsite from "../../assets/images/newsite.svg";
 import branding from "../../assets/images/branding.png";
+import dashboard from "../../assets/images/dashboard.png";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { useState } from "react";
+
+const SignupSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+});
 
 export const Main = () => {
+  const [signup, setSignup] = useState(true);
   return (
     <div id="mainpage">
       <div className="section-1">
@@ -95,6 +104,45 @@ export const Main = () => {
           </div>
           <div className="img-wrapper">
             <img src={branding}></img>
+          </div>
+        </div>
+      </div>
+      <div className="section-5">
+        <div className="container">
+          <div className="leftContent">
+            <h2>Everything under one dashboard</h2>
+            <Formik
+              initialValues={{
+                firstName: "",
+                lastName: "",
+                email: "",
+              }}
+              validationSchema={SignupSchema}
+              onSubmit={(values) => {
+                setSignup(false);
+              }}
+            >
+              {({ errors, touched }) => (
+                <Form>
+                  {signup ? (
+                    <>
+                      <p>Ready to sign up?</p>
+                      <Field name="email" type="email" placeholder="Email" />
+                      {errors.email && touched.email ? (
+                        <div>{errors.email}</div>
+                      ) : null}
+
+                      <button type="submit">Sign Up</button>
+                    </>
+                  ) : (
+                    <span className="thanks">Thanks for Sign Up</span>
+                  )}
+                </Form>
+              )}
+            </Formik>
+          </div>
+          <div className="img-wrapper">
+            <img src={dashboard}></img>
           </div>
         </div>
       </div>
