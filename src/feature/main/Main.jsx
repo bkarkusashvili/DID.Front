@@ -6,7 +6,7 @@ import socialone from "../../assets/images/social-1.png";
 import socialtwo from "../../assets/images/social-2.png";
 import newsite from "../../assets/images/newsite.png";
 import branding from "../../assets/images/branding.png";
-import dashboard from "../../assets/images/dashboard.png";
+import dashboard from "../../assets/images/dash.png";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -45,16 +45,16 @@ export const Main = () => {
           <div className="leftContent">
             <h2>Social media content</h2>
             <p>
-              Dogs have proven themselves time and again to be loyal, kind,
-              understanding,
+              Need to create an eye-catching post for your social media with
+              cool description that will attract everyone’s attention?
               <br />
               <br />
-              may have been the worst day of our lives and make us feel better
-              with a wag of their tail and a playful grin.
+              No need to hire copyrighter or graphic designer - our smart AI
+              system has all that you need.
               <br />
               <br />
-              happily after what may have been the worst day of our lives and
-              make us eir tail and a playful grin.
+              Create engaging social media content for any objective in no time
+              without an extra effort.
             </p>
           </div>
           <div className="img-wrapper">
@@ -68,16 +68,16 @@ export const Main = () => {
           <div className="leftContent">
             <h2>Create Website content</h2>
             <p>
-              Dogs have proven themselves time and again to be loyal, kind,
-              understanding,
+              Always thought of creating a descent website as the most
+              frustrating thing? Well, not in this case!
               <br />
               <br />
-              may have been the worst day of our lives and make us feel better
-              with a wag of their tail and a playful grin.
+              Here you can choose from our predesigned website templates for any
+              business and create your professional image on the web.
               <br />
               <br />
-              happily after what may have been the worst day of our lives and
-              make us eir tail and a playful grin.
+              Our contractor designers will work on your specific requirements
+              and create top notch content for your website.
             </p>
           </div>
           <div className="img-wrapper">
@@ -90,16 +90,16 @@ export const Main = () => {
           <div className="leftContent">
             <h2>Branding elements applied</h2>
             <p>
-              Dogs have proven themselves time and again to be loyal, kind,
-              understanding,
+              If you want to create a brand book fast but do not want to spend a
+              fortune on it then congrats, you are in the right place!
               <br />
               <br />
-              may have been the worst day of our lives and make us feel better
-              with a wag of their tail and a playful grin.
+              Start creating your brand or business from zero and build up your
+              digital identity on didgeai.
               <br />
               <br />
-              happily after what may have been the worst day of our lives and
-              make us eir tail and a playful grin.
+              Here you will find all the elements that make up your brand: logo,
+              colors, visuals, fonts, sizes, style variations and more.
             </p>
           </div>
           <div className="img-wrapper">
