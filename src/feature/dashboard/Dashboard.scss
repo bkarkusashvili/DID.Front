@@ -15,7 +15,7 @@
     .newpost {
       display: grid;
       grid-template-columns: 200px 200px 200px 200px auto;
-      gap: 20px;
+      grid-gap: 20px;
       width: 100%;
 
       @media screen and (max-width: 1600px) {
@@ -72,7 +72,7 @@
           position: relative;
           background-color: #4b4b4b;
           &::after {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             right: 10px;
@@ -129,7 +129,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       clear: both;
     }
   }
@@ -242,36 +242,36 @@
 }
 @keyframes animate {
   0% {
-    content: "C";
+    content: 'C';
   }
   10% {
-    content: "Co";
+    content: 'Co';
   }
   20% {
-    content: "Com";
+    content: 'Com';
   }
   30% {
-    content: "Comi";
+    content: 'Comi';
   }
   40% {
-    content: "Comin";
+    content: 'Comin';
   }
   50% {
-    content: "Coming";
+    content: 'Coming';
   }
   60% {
-    content: "Coming S";
+    content: 'Coming S';
   }
   70% {
-    content: "Coming So";
+    content: 'Coming So';
   }
   80% {
-    content: "Coming Soo";
+    content: 'Coming Soo';
   }
   90% {
-    content: "Coming Soon";
+    content: 'Coming Soon';
   }
   100% {
-    content: "Coming Soon!";
+    content: 'Coming Soon!';
   }
 }
