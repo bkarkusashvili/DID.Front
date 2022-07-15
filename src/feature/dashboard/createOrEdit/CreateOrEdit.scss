@@ -89,7 +89,7 @@
 
         .imgUpload {
           &::after {
-            content: '';
+            content: "";
             border-bottom: 1px solid #f5f3f6;
             width: 100%;
             display: block;
@@ -283,12 +283,12 @@
             width: 100%;
             border: none;
             outline: none;
-            overflow: hidden;
             color: #4b4b4b;
             font-weight: 600;
             resize: none;
-            min-height: 70px;
+            min-height: 120px;
             max-height: 500px;
+            overflow-y: scroll;
           }
 
           .buttons {
@@ -344,7 +344,7 @@
               }
 
               &::after {
-                content: '';
+                content: "";
                 display: block;
                 width: 18px;
                 height: 22px;
@@ -403,7 +403,7 @@
       color: #ffffff;
 
       &::before {
-        content: '';
+        content: "";
         display: block;
         width: 30px;
         height: 24px;
