@@ -118,6 +118,7 @@
       cursor: pointer;
     }
     button {
+      flex-shrink: 0;
       float: left;
       width: 20%;
       cursor: pointer;

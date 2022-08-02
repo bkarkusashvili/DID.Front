@@ -14,9 +14,9 @@ export const Remember = ({ hasReset }) => {
         onClick={() => setIsActive(!isActive)}
       >
         <Radio active={isActive} style={{ marginRight: 13 }} />
-        Remember me
+        დამიმახსოვრე
       </span>
-      {hasReset && <Link to="/reset" children="Forgot your password?" />}
+      {hasReset && <Link to="/reset" children="პაროლის აღდგენა?" />}
     </div>
   );
 };

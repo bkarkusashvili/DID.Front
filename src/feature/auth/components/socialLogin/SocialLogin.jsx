@@ -18,7 +18,7 @@ export const SocialLogin = () => {
         </li> */}
       </ul>
       <div className="or">
-        <span>or</span>
+        <span>ან</span>
       </div>
     </div>
   );

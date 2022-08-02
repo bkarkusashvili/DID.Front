@@ -7,6 +7,7 @@ import { Dashboard, Auth, Main, Terms, Policy, CreateOrEdit } from './feature';
 
 import './main.scss';
 import { API } from './env';
+import { CreateOrEditSite } from './feature/dashboard/createOrEditSite/CreateOrEditSite';
 
 function App() {
   const [search] = useSearchParams();
@@ -69,6 +70,34 @@ function App() {
               user={token}
               children={
                 <CreateOrEdit token={token} logout={() => updateToken(null)} />
+              }
+            />
+          }
+        />
+        <Route
+          path="edit/site/:id"
+          element={
+            <PrivateRoute
+              user={token}
+              children={
+                <CreateOrEditSite
+                  token={token}
+                  logout={() => updateToken(null)}
+                />
+              }
+            />
+          }
+        />
+        <Route
+          path="create/site"
+          element={
+            <PrivateRoute
+              user={token}
+              children={
+                <CreateOrEditSite
+                  token={token}
+                  logout={() => updateToken(null)}
+                />
               }
             />
           }

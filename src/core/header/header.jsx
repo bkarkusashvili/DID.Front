@@ -16,11 +16,11 @@ export const Header = ({ hasUser, logout }) => {
       </select> */}
       <div className="loginControl">
         {hasUser ? (
-          <button onClick={logout} children="Logout" />
+          <button onClick={logout} children="გამოსვლა" />
         ) : (
           <>
-            <Link className="logbtn" to="/login" children="Log In" />
-            <Link to="register" children="Sign up" />
+            <Link className="logbtn" to="/login" children="შესვლა" />
+            <Link to="register" children="რეგისტრაცია" />
           </>
         )}
       </div>

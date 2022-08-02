@@ -15,46 +15,46 @@ const form = {
   login: [
     {
       name: 'email',
-      label: 'Email',
+      label: 'ელ-ფოსტა',
       type: 'email',
     },
     {
       name: 'password',
-      label: 'Password',
+      label: 'პაროლი',
       type: 'password',
     },
   ],
   register: [
     {
       name: 'firstname',
-      label: 'First Name',
+      label: 'სახელი',
       type: 'text',
     },
     {
       name: 'lastname',
-      label: 'Last Name',
+      label: 'გვარი',
       type: 'text',
     },
     {
       name: 'email',
-      label: 'Email',
+      label: 'ელ-ფოსტა',
       type: 'email',
     },
     {
       name: 'password',
-      label: 'Password',
+      label: 'პაროლი',
       type: 'password',
     },
     {
       name: 'password_confirmation',
-      label: 'Confirm Password',
+      label: 'გაიმეორე პაროლი',
       type: 'password',
     },
   ],
   reset: [
     {
       name: 'email',
-      label: 'Email',
+      label: 'ელ-ფოსტა',
       type: 'email',
     },
   ],
@@ -92,16 +92,16 @@ const validationSchema = {
 
 const contents = {
   login: {
-    title: 'Log into system',
-    button: 'Log in',
+    title: 'სისტემაში შესვლა',
+    button: 'შესვლა',
   },
   register: {
     title: 'Create your account',
-    button: 'Get started',
+    button: 'დაწყება',
   },
   reset: {
-    title: 'Reset your password',
-    button: 'Reset Password',
+    title: 'აღადგინე შენი პაროლი',
+    button: 'პაროლის აღდგენა',
   },
 };
 
@@ -200,12 +200,12 @@ export const Auth = ({ type, updateToken }) => {
           <div className="other-option">
             {isRegister ? (
               <>
-                Already have an account? <Link to="/login" children="Log in" />
+                უკვე ხარ რეგისტრირებული? <Link to="/login" children="შესვლა" />
               </>
             ) : (
               <>
-                Don't have an account?{' '}
-                <Link to="/register" children="Register" />
+                არ ხარ დარეგისტრირებული?{' '}
+                <Link to="/register" children="რეგისტრაცია" />
               </>
             )}
           </div>

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link } from 'react-router-dom';
+import React from 'react';
 
-import "./footer.scss";
+import './footer.scss';
 
 export const Footer = () => {
   return (
@@ -34,13 +34,13 @@ export const Footer = () => {
       <div className="terms">
         <ul>
           <li>
-            <Link to="/terms">terms and conditions</Link>
+            <Link to="/terms">წესები და პირობები</Link>
           </li>
           <li>
-            <Link to="/policy">privacy policy</Link>
+            <Link to="/policy">კონფიდენციალურობის პოლიტიკა</Link>
           </li>
         </ul>
-        <span>© Didge.ai. All rights reserved</span>
+        <span>© Did.ge. All rights reserved</span>
       </div>
     </footer>
   );

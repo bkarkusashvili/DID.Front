@@ -14,15 +14,15 @@ export const Card = ({ data, color }) => {
         </h2>
         <div className="imgwraper">
           <img src={img} alt="Social"></img>
-          <span>status</span>
+          <span>სტატუსი</span>
         </div>
       </div>
       <div className="bottom">
         <p>Accounting & Financial Services</p>
         <span>domain.com</span>
         <div className="buttons">
-          <Link to={`/edit/social/${data.id}`} children="Edit" />
-          <button>Submit</button>
+          <Link to={`/edit/social/${data.id}`} children="რედაქტირება" />
+          <button>გაგზავნა</button>
         </div>
       </div>
     </div>
