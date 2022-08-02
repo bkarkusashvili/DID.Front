@@ -1,4 +1,5 @@
 import React from 'react';
+import { WEB } from '../../../../env';
 
 import './SocialLogin.scss';
 
@@ -7,14 +8,14 @@ export const SocialLogin = () => {
     <div className="social-login">
       <ul>
         <li>
-          <a href="#">Login with Google</a>
+          <a href={`${WEB}auth/google/redirect`}>Login with Google</a>
         </li>
         <li>
-          <a href="#">Login with facebook</a>
+          <a href={`${WEB}auth/facebook/redirect`}>Login with facebook</a>
         </li>
-        <li>
+        {/* <li>
           <a href="#">Login with Apple</a>
-        </li>
+        </li> */}
       </ul>
       <div className="or">
         <span>or</span>

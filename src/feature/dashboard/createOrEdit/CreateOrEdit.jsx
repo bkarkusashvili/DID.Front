@@ -9,8 +9,6 @@ import { Radio } from '../../../shared';
 
 import './CreateOrEdit.scss';
 
-import save from '../../../assets/svg/check.svg';
-import img from '../../../assets/images/img.png';
 import loading from '../../../assets/svg/loading.svg';
 
 const types = [
@@ -22,6 +20,7 @@ const types = [
 
 export const CreateOrEdit = ({ token, logout }) => {
   const [isTextLoading, setIsTextLoading] = useState(false);
+  const [item, setItem] = useState({});
   const [images, setImages] = useState([]);
   const [suggestedPhotos, setSuggestedPhotos] = useState([]);
   const { type, id } = useParams();
@@ -120,6 +119,16 @@ export const CreateOrEdit = ({ token, logout }) => {
 
     generatePhoto();
   }, [suggestedPhotos]);
+
+  useEffect(() => {
+    if (!id) return setItem({});
+
+    const headers = { Authorization: `Bearer ${token}` };
+
+    axios
+      .get(API + `social/${id}`, { headers })
+      .then((res) => setItem(res.data));
+  }, [id]);
 
   return (
     <div id="CreateOrEdit">

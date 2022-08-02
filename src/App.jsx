@@ -1,22 +1,25 @@
-import { useState } from "react";
-import { Mainlayout, PrivateRoute, PublicRoute } from "./core";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from 'react';
+import { Mainlayout, PrivateRoute, PublicRoute } from './core';
+import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 
-import { Dashboard, Auth, Main, Terms, Policy, CreateOrEdit } from "./feature";
+import { Dashboard, Auth, Main, Terms, Policy, CreateOrEdit } from './feature';
 
-import "./main.scss";
-import { API } from "./env";
+import './main.scss';
+import { API } from './env';
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [search] = useSearchParams();
+  const [token, setToken] = useState(
+    search.get('token') || localStorage.getItem('token')
+  );
   const navigate = useNavigate();
 
   const updateToken = (newToken) => {
     if (newToken === null) {
-      localStorage.removeItem("token");
+      localStorage.removeItem('token');
     } else {
-      localStorage.setItem("token", newToken);
+      localStorage.setItem('token', newToken);
     }
 
     setToken(newToken);
@@ -24,12 +27,12 @@ function App() {
 
   const logout = () => {
     axios
-      .post(API + "logout", null, {
+      .post(API + 'logout', null, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
         updateToken(null);
-        navigate("/");
+        navigate('/');
       })
       .catch(() => {});
   };
