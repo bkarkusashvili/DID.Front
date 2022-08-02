@@ -168,7 +168,7 @@ export const Auth = ({ type, updateToken }) => {
     <div id="auth">
       <div className="formLayout">
         <h1 children={content.title} />
-        {!isReset && <SocialLogin />}
+        {/* {!isReset && <SocialLogin />} */}
         <div className="form">
           {form[type].map((item, key) => (
             <TextField

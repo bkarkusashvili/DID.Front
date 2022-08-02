@@ -69,7 +69,7 @@ export const Dashboard = ({ token, logout }) => {
     <div id="dashboard">
       <div className="contentcontrol">
         <div className="newpost">
-          <Link to="/create/site">საიტი</Link>
+          {/* <Link to="/create/site">საიტი</Link> */}
           <a
             href="https://xe8tbx8coxt.typeform.com/to/shpZNW5U"
             target="_blank"

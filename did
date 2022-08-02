@@ -19,6 +19,18 @@ server {
 
 server {
   listen 443 ssl;
+  root /var/www/did/geo;
+  index index.html index.htm index.nginx-debian.html;
+
+  server_name www.did.ge did.ge;
+
+  location / {
+    try_files $uri $uri/ /index.html =404;
+  }
+}
+
+server {
+  listen 443 ssl;
   server_name new.didge.ai www.new.didge.ai;
   add_header X-Frame-Options "SAMEORIGIN";
   add_header X-XSS-Protection "1; mode=block";
@@ -105,9 +117,17 @@ server {
     return 301 https://$host$request_uri;
   }
 
+  if ($host = www.did.ge) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = did.ge) {
+    return 301 https://$host$request_uri;
+  }
+
   listen 80;
   listen [::]:80;
 
-  server_name www.didge.ai didge.ai api.didge.ai www.api.didge.ai new.didge.ai www.new.didge.ai;
+  server_name www.did.ge did.ge www.didge.ai didge.ai api.didge.ai www.api.didge.ai new.didge.ai www.new.didge.ai;
   return 404;
 }
