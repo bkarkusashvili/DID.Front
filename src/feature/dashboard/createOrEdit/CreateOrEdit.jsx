@@ -132,177 +132,11 @@ export const CreateOrEdit = ({ token, logout }) => {
 
   return (
     <div id="CreateOrEdit">
-      <div className="head">
-        <h3>Fb post Name</h3>
-        <div className="actions-wrap">
-          <div className="title-wrap">
-            <input
-              type="text"
-              name="title"
-              value={values.title}
-              onChange={handleChange}
-              placeholder="Enter post Title"
-            />
-            <button onClick={() => createOrUpdate(true)} />
-          </div>
-          <div className="actions">
-            {isEdit && (
-              <button
-                className="btn delete"
-                onClick={deleteItem}
-                children="Delete"
-              />
-            )}
-            <button
-              className="btn publish"
-              onClick={() => createOrUpdate(false)}
-              children="Publish"
-            />
-          </div>
-        </div>
-      </div>
       <div className="form">
-        <div className="image-form">
-          <div className="uploadedImg">
-            <div className="imgUpload">
-              <div className="file-input">
-                <span children="Drag and drop your photos or" />
-                <button
-                  children="Browse"
-                  onClick={(e) => e.target.nextSibling.click()}
-                />
-                <input
-                  type="file"
-                  name="photos"
-                  hidden
-                  multiple
-                  onChange={(e) => previwImages(e)}
-                />
-              </div>
-              <span>3 photos maximum</span>
-            </div>
-            {!!values.photos &&
-              !!values.photos.length &&
-              values.photos.map((item, key) => (
-                <div key={key} className="imgBox">
-                  <span children={item.name}></span>
-                  <img src={images[key]} alt="" />
-                </div>
-              ))}
-          </div>
-          <div className="generImg">
-            <span>Suggested Photo will be genarated here</span>
-            <img src={values.suggestedPhoto} alt="" />
-            <button onClick={generatePhoto}>Regenerate</button>
-          </div>
-        </div>
-
+        <div></div>
         <div className="main-form">
-          <div className="type-wrap">
-            <h3>Generate Facebook post</h3>
-            <div className="list">
-              {types.map((item, key) => (
-                <div
-                  key={key}
-                  className="item"
-                  onClick={() => setFieldValue('type', key)}
-                >
-                  <span>{item}</span>
-                  <Radio
-                    active={values.type === key}
-                    style={{ backgroundColor: '#FFFFFF' }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="keyword-wrap">
-            <h3>Keywords</h3>
-            <div className="keywords">
-              <div className="list">
-                {values.keywords &&
-                  values.keywords.map((item, kye) => (
-                    <span key={kye} children={item} />
-                  ))}
-                <input type="text" onKeyUp={toggleKeyword} />
-              </div>
-              <button
-                disabled={isTextLoading}
-                children={
-                  isTextLoading ? <img src={loading} alt="Loading" /> : 'Go'
-                }
-                onClick={generateText}
-              />
-            </div>
-          </div>
-
           <div className="text-wrap">
-            <h3>Your Text</h3>
-            <div className="text-container">
-              <textarea
-                name="text"
-                onChange={handleChange}
-                value={values.text}
-                children={values.text}
-              />
-              {/* <div className="buttons">
-                <button className="btn">Regenerate</button>
-                <button className="btn">Edit</button>
-                <button className="btn">Submit</button>
-              </div> */}
-            </div>
-          </div>
-
-          <div className="text-wrap">
-            <h3>On photo text field</h3>
-            <div className="text-container">
-              <textarea
-                name="photoText"
-                onChange={handleChange}
-                children={values.text}
-              />
-              {/* <div className="buttons">
-                <button className="btn">Regenerate</button>
-                <button className="btn">Edit</button>
-                <button className="btn">Submit</button>
-              </div> */}
-            </div>
-          </div>
-
-          <div className="images-wrap">
-            <h3>
-              Upload other materials or logos you would like to use in this post
-            </h3>
-            <div className="images">
-              <div className="file-input">
-                <span children="Drag and drop or" />
-                <button
-                  children="Browse"
-                  onClick={(e) => e.target.nextSibling.click()}
-                />
-                <input
-                  type="file"
-                  name="materials"
-                  hidden
-                  multiple
-                  onChange={insertImages}
-                />
-              </div>
-              {!!values.materials && !!values.materials.length && (
-                <div className="list">
-                  {values.materials.map((item, key) => (
-                    <div key={key} className="item">
-                      <span children={item.name} />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="text-wrap">
-            <h3>Leave your comment here</h3>
+            <h3>დაგვიტოვეთ შეტყობინება</h3>
             <div className="text-container">
               <textarea
                 name="comment"
@@ -312,6 +146,7 @@ export const CreateOrEdit = ({ token, logout }) => {
             </div>
           </div>
         </div>
+        <div></div>
       </div>
     </div>
   );
