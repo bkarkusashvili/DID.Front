@@ -2,8 +2,7 @@ import React from "react";
 import "./Main.scss";
 import bgimg from "../../assets/images/mainBG.png";
 import { Link } from "react-router-dom";
-import socialone from "../../assets/images/social-1.png";
-import socialtwo from "../../assets/images/social-2.png";
+import newsites from "../../assets/images/newsites.png";
 import newsite from "../../assets/images/newsite.png";
 import branding from "../../assets/images/branding.png";
 import dashboard from "../../assets/images/dash.png";
@@ -23,19 +22,19 @@ export const Main = () => {
         <div className="container">
           <div className="leftContent">
             <span>
-              Enhance your online presence
-              <span>Generate quality content</span>
+              გააძლიერე შენი ონლაინ ხილვადობა
+              <span>მიიღე თანამედროვე საიტი სწრაფად</span>
             </span>
             <p>
-              Artificial Intelligence that helps you generate and optimize
-              content for social media and websites
+              სხვადასხვა ინდუსტრიაზე მორგებული ასეულობით ნიმუშებიდან აირჩიე
+              შენთვის სასურველი
             </p>
-            <Link to="/register">Get started</Link>
+            <Link to="/register">დაიწყე</Link>
           </div>
           <div className="list">
-            <span>Social media content</span>
-            <span>Websites</span>
-            <span>Newsletters and Blogs</span>
+            <span>Mobile 1st საიტები</span>
+            <span>ძებნაში ოპტიმიზაცია</span>
+            <span>ბრენდინგი</span>
           </div>
         </div>
         <img src={bgimg}></img>
@@ -43,41 +42,46 @@ export const Main = () => {
       <div className="section-2">
         <div className="container">
           <div className="leftContent">
-            <h2>Social media content</h2>
+            <h2>შენი საიტი მზადაა</h2>
             <p>
-              Need to create an eye-catching post for your social media with
-              cool description that will attract everyone’s attention?
+              მოძებნე და იპოვე სასურველი თემატიკის და მოწყობის ვებ-გვერდი
+              did.ge-ზე.
               <br />
               <br />
-              No need to hire copyrighter or graphic designer - our smart AI
-              system has all that you need.
+              ჩვენთან ასეულობით საიტის მზა შაბლონია, რომელიც ნებისმიერ
+              თემატიკასა და საქმიანობის სფეროზეა გათვლილი.
               <br />
               <br />
-              Create engaging social media content for any objective in no time
-              without an extra effort.
+              განსხვავებული მოწყობისა და მოცულობის ნიმუშები შესაძლებლობას
+              გვაძლევს თქვენ მოთხოვნებსა და ბიზნესის მასშტაბებს მაქსიმალურად
+              მოვერგოთ.
+              <br />
+              <br />
+              ნუ გადადებ - შენი საიტი უკვე მზადაა!
             </p>
           </div>
           <div className="img-wrapper">
-            <img src={socialone}></img>
-            <img src={socialtwo}></img>
+            <img src={newsites}></img>
           </div>
         </div>
       </div>
       <div className="section-3">
         <div className="container">
           <div className="leftContent">
-            <h2>Create Website content</h2>
+            <h2>შექმენი „ქონთენთი“ შენი საიტისთვის</h2>
             <p>
-              Always thought of creating a descent website as the most
-              frustrating thing? Well, not in this case!
+              კარგი ვებ-გვერდის შექმნა ყოველთვის რთულ და დამღლელ პროცესთან
+              ასოცირდება, რომელიც აუცილებლად პრობლემად იქცევა? ამ შემთხვევაში
+              არა
               <br />
               <br />
-              Here you can choose from our predesigned website templates for any
-              business and create your professional image on the web.
+              აქ თქვენ შეგიძლიათ ნებისმიერი საქმიანობისთვის შეარჩიოთ ვებ-გვერდი
+              საიტების მზა შაბლონებიდან და შექმნათ თქვენი პროფესიონალური იმიჯი
+              ინტერნეტში
               <br />
               <br />
-              Our contractor designers will work on your specific requirements
-              and create top notch content for your website.
+              ჩვენი კონტრაქტორი დიზაინერები იმუშავებენ თქვენ კონკრეტულ
+              მოთხოვნებზე და შექმნიან თანამედროვე ქონთენთს თქვენი საიტისთვის.
             </p>
           </div>
           <div className="img-wrapper">
@@ -88,18 +92,18 @@ export const Main = () => {
       <div className="section-4">
         <div className="container">
           <div className="leftContent">
-            <h2>Branding elements applied</h2>
+            <h2>ბრენდის ელემენტები</h2>
             <p>
-              If you want to create a brand book fast but do not want to spend a
-              fortune on it then congrats, you are in the right place!
+              თუ გსურთ, სწრაფად შექმნათ „ბრენდბუქი“, მაგრამ არა კოლოსალური
+              თანხის სანაცვლოდ, მაშინ გილოცავთ, თქვენ სწორ სივრცეში მოხვდით!
               <br />
               <br />
-              Start creating your brand or business from zero and build up your
-              digital identity on didgeai.
+              დაიწყეთ ბრენდის ან ბიზნესის აწყობა ნულიდან და შექმენით თქვენი
+              ციფრული იდენტობა did.ge-ზე.
               <br />
               <br />
-              Here you will find all the elements that make up your brand: logo,
-              colors, visuals, fonts, sizes, style variations and more.
+              აქ იპოვით ყველა იმ ელემენტს, რომელიც რეალურად თქვენს ბრენდს ქმნის:
+              ლოგო, ფერები, ვიზუალი, „ფონტები“, სტილის ვარიაციები და სხვა.
             </p>
           </div>
           <div className="img-wrapper">
@@ -110,7 +114,7 @@ export const Main = () => {
       <div className="section-5">
         <div className="container">
           <div className="leftContent">
-            <h2>Everything under one dashboard</h2>
+            <h2>ყველაფერი ერთი დაშბორდის ქვეშ</h2>
             <Formik
               initialValues={{
                 firstName: "",
@@ -126,16 +130,21 @@ export const Main = () => {
                 <Form>
                   {signup ? (
                     <>
-                      <p>Ready to sign up?</p>
-                      <Field name="email" type="email" placeholder="Email" />
+                      <p>
+                        მომავალში ფიქრობთ საიტის გაკეთებას? გაიგეთ პირველმა
+                        შემოთავაზებების და სიახლეების შესახებ.
+                      </p>
+                      <Field name="email" type="email" placeholder="ელ-ფოსტა" />
                       {errors.email && touched.email ? (
                         <div>{errors.email}</div>
                       ) : null}
 
-                      <button type="submit">Sign Up</button>
+                      <button type="submit">გამოწერა</button>
                     </>
                   ) : (
-                    <span className="thanks">Thanks for Sign Up</span>
+                    <span className="thanks">
+                      თქვენი შეტყობინება მიღებულია!
+                    </span>
                   )}
                 </Form>
               )}

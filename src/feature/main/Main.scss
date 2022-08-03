@@ -101,6 +101,11 @@
     background-color: #f5f3f6;
     width: 100%;
     .leftContent {
+      width: 50%;
+
+      @media screen and (max-width: 999px) {
+        width: 100%;
+      }
       h2 {
         font-size: 50px;
         font-weight: bold;
@@ -119,22 +124,19 @@
     }
     .img-wrapper {
       display: flex;
+      width: 50%;
 
       @media screen and (max-width: 999px) {
         flex-direction: column;
+        width: 100%;
       }
 
       img {
-        width: 50%;
+        width: 100%;
         &:nth-child(1) {
-          margin-right: 20px;
-          margin-left: 20px;
-
           @media screen and (max-width: 999px) {
-            margin-right: 0;
             margin-bottom: 20px;
             margin-top: 20px;
-            margin-left: 0;
             width: 100%;
           }
         }
@@ -151,7 +153,6 @@
       h2 {
         font-size: 50px;
         font-weight: bold;
-        max-width: 80%;
         line-height: 59px;
         color: #552f7c;
         margin-bottom: 45px;
@@ -169,7 +170,7 @@
       justify-content: end;
 
       img {
-        width: 70%;
+        width: 100%;
 
         @media screen and (max-width: 999px) {
           width: 100%;
