@@ -1,61 +1,61 @@
-import React, { useMemo, useState, useEffect } from "react";
-import { TextField } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useMemo, useState, useEffect } from 'react';
+import { TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-import "./Auth.scss";
+import './Auth.scss';
 
-import { Remember, SocialLogin } from "./components";
-import { API } from "../../env";
+import { Remember, SocialLogin } from './components';
+import { API } from '../../env';
 
 const form = {
   login: [
     {
-      name: "email",
-      label: "ელ-ფოსტა",
-      type: "email",
+      name: 'email',
+      label: 'ელ-ფოსტა',
+      type: 'email',
     },
     {
-      name: "password",
-      label: "პაროლი",
-      type: "password",
+      name: 'password',
+      label: 'პაროლი',
+      type: 'password',
     },
   ],
   register: [
     {
-      name: "firstname",
-      label: "სახელი",
-      type: "text",
+      name: 'firstname',
+      label: 'სახელი',
+      type: 'text',
     },
     {
-      name: "lastname",
-      label: "გვარი",
-      type: "text",
+      name: 'lastname',
+      label: 'გვარი',
+      type: 'text',
     },
     {
-      name: "email",
-      label: "ელ-ფოსტა",
-      type: "email",
+      name: 'email',
+      label: 'ელ-ფოსტა',
+      type: 'email',
     },
     {
-      name: "password",
-      label: "პაროლი",
-      type: "password",
+      name: 'password',
+      label: 'პაროლი',
+      type: 'password',
     },
     {
-      name: "password_confirmation",
-      label: "გაიმეორე პაროლი",
-      type: "password",
+      name: 'password_confirmation',
+      label: 'გაიმეორე პაროლი',
+      type: 'password',
     },
   ],
   reset: [
     {
-      name: "email",
-      label: "ელ-ფოსტა",
-      type: "email",
+      name: 'email',
+      label: 'ელ-ფოსტა',
+      type: 'email',
     },
   ],
 };
@@ -64,53 +64,54 @@ const validationSchema = {
   login: yup.object({
     email: yup
       .string()
-      .required("Email is required")
-      .email("Enter a valid email"),
+      .required('Email is required')
+      .email('Enter a valid email'),
     password: yup
       .string()
-      .required("Password is required")
-      .min(8, "Password should be of minimum 8 characters length"),
+      .required('Password is required')
+      .min(8, 'Password should be of minimum 8 characters length'),
   }),
   register: yup.object({
-    firstname: yup.string().required("Firstname is required"),
-    lastname: yup.string().required("Lastname is required"),
+    firstname: yup.string().required('Firstname is required'),
+    lastname: yup.string().required('Lastname is required'),
     email: yup
       .string()
-      .required("Email is required")
-      .email("Enter a valid email"),
+      .required('Email is required')
+      .email('Enter a valid email'),
     password: yup
       .string()
-      .required("Password is required")
-      .min(8, "Password should be of minimum 8 characters length"),
+      .required('Password is required')
+      .min(8, 'Password should be of minimum 8 characters length'),
     password_confirmation: yup
       .string()
-      .required("Password is required")
-      .min(8, "Password should be of minimum 8 characters length")
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .required('Password is required')
+      .min(8, 'Password should be of minimum 8 characters length')
+      .oneOf([yup.ref('password'), null], 'Passwords must match'),
   }),
 };
 
 const contents = {
   login: {
-    title: "სისტემაში შესვლა",
-    button: "შესვლა",
+    title: 'სისტემაში შესვლა',
+    button: 'შესვლა',
   },
   register: {
-    title: "გაიარე რეგისტრაცია",
-    button: "რეგისტრაცია",
+    title: 'გაიარე რეგისტრაცია',
+    button: 'რეგისტრაცია',
   },
   reset: {
-    title: "აღადგინე შენი პაროლი",
-    button: "პაროლის აღდგენა",
+    title: 'აღადგინე შენი პაროლი',
+    button: 'პაროლის აღდგენა',
   },
 };
 
 export const Auth = ({ type, updateToken }) => {
-  const isLogin = useMemo(() => type === "login", [type]);
-  const isRegister = useMemo(() => type === "register", [type]);
-  const isReset = useMemo(() => type === "reset", [type]);
+  const isLogin = useMemo(() => type === 'login', [type]);
+  const isRegister = useMemo(() => type === 'register', [type]);
+  const isReset = useMemo(() => type === 'reset', [type]);
   const content = useMemo(() => contents[type], [type]);
   const [notification, setNotification] = useState();
+  const [isSubmited, setIsSubmited] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = (data, helper) => {
@@ -119,7 +120,7 @@ export const Auth = ({ type, updateToken }) => {
       .then((res) => {
         if (!isReset) {
           updateToken(res.data.plainTextToken);
-          navigate("/dashboard");
+          navigate('/dashboard');
         } else {
           setNotification(res.data.status);
         }
@@ -143,7 +144,7 @@ export const Auth = ({ type, updateToken }) => {
     handleSubmit,
     errors,
     touched,
-    setTouched,
+    setFieldTouched,
     values,
     setValues,
     setErrors,
@@ -154,14 +155,19 @@ export const Auth = ({ type, updateToken }) => {
   });
 
   const submit = (e) => {
-    setTouched();
+    // form[type].forEach((item) => {
+    //   console.log(item.name);
+    //   setFieldTouched(item.name, true);
+    // });
+    setIsSubmited(true);
+
     handleSubmit(e);
   };
 
   useEffect(() => {
     setValues({});
     setErrors({});
-    setNotification("");
+    setNotification('');
   }, [type]);
 
   return (
@@ -178,11 +184,13 @@ export const Auth = ({ type, updateToken }) => {
               name={item.name}
               type={item.type}
               label={item.label}
-              value={values[item.name] || ""}
+              value={values[item.name] || ''}
               onChange={handleChange}
               onBlur={handleBlur}
-              error={touched[item.name] && errors[item.name]}
-              helperText={touched[item.name] && errors[item.name]}
+              error={(touched[item.name] || isSubmited) && errors[item.name]}
+              helperText={
+                (touched[item.name] || isSubmited) && errors[item.name]
+              }
             />
           ))}
         </div>
@@ -204,7 +212,7 @@ export const Auth = ({ type, updateToken }) => {
               </>
             ) : (
               <>
-                არ ხარ დარეგისტრირებული?{" "}
+                არ ხარ დარეგისტრირებული?{' '}
                 <Link to="/register" children="რეგისტრაცია" />
               </>
             )}
