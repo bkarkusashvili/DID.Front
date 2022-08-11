@@ -133,7 +133,6 @@ export const CreateOrEdit = ({ token, logout }) => {
   return (
     <div id="CreateOrEdit">
       <div className="head">
-        <h3>Fb post Name</h3>
         <div className="actions-wrap">
           <div className="title-wrap">
             <input
@@ -218,7 +217,7 @@ export const CreateOrEdit = ({ token, logout }) => {
           </div>
 
           <div className="keyword-wrap">
-            <h3>Keywords</h3>
+            <h3>Ask AI to</h3>
             <div className="keywords">
               <div className="list">
                 {values.keywords &&
@@ -238,7 +237,7 @@ export const CreateOrEdit = ({ token, logout }) => {
           </div>
 
           <div className="text-wrap">
-            <h3>Your Text</h3>
+            <h3>AI wrote</h3>
             <div className="text-container">
               <textarea
                 name="text"
@@ -246,28 +245,17 @@ export const CreateOrEdit = ({ token, logout }) => {
                 value={values.text}
                 children={values.text}
               />
-              {/* <div className="buttons">
-                <button className="btn">Regenerate</button>
-                <button className="btn">Edit</button>
-                <button className="btn">Submit</button>
-              </div> */}
             </div>
           </div>
 
-          <div className="text-wrap">
+          <div className="input-wrap">
             <h3>On photo text field</h3>
-            <div className="text-container">
-              <textarea
-                name="photoText"
-                onChange={handleChange}
-                children={values.text}
-              />
-              {/* <div className="buttons">
-                <button className="btn">Regenerate</button>
-                <button className="btn">Edit</button>
-                <button className="btn">Submit</button>
-              </div> */}
-            </div>
+            <input
+              type="text"
+              name="photoText"
+              value={values.photoText}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="images-wrap">
@@ -301,15 +289,14 @@ export const CreateOrEdit = ({ token, logout }) => {
             </div>
           </div>
 
-          <div className="text-wrap">
+          <div className="input-wrap">
             <h3>Leave your comment here</h3>
-            <div className="text-container">
-              <textarea
-                name="comment"
-                onChange={handleChange}
-                children={values.text}
-              />
-            </div>
+            <input
+              type="text"
+              name="comment"
+              value={values.comment}
+              onChange={handleChange}
+            />
           </div>
         </div>
       </div>

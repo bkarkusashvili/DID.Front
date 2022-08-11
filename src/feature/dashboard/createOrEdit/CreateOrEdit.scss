@@ -8,12 +8,6 @@
     padding-bottom: 40px;
     margin-bottom: 40px;
 
-    h3 {
-      color: #4b4b4b;
-      font-size: 32px;
-      font-weight: bold;
-    }
-
     .actions-wrap {
       display: flex;
       justify-content: space-between;
@@ -89,7 +83,7 @@
 
         .imgUpload {
           &::after {
-            content: "";
+            content: '';
             border-bottom: 1px solid #f5f3f6;
             width: 100%;
             display: block;
@@ -286,7 +280,7 @@
             color: #4b4b4b;
             font-weight: 600;
             resize: none;
-            min-height: 120px;
+            min-height: 350px;
             max-height: 500px;
             overflow-y: scroll;
           }
@@ -305,6 +299,38 @@
                 margin: 0 20px;
               }
             }
+          }
+        }
+      }
+
+      .input-wrap {
+        margin-bottom: 40px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        h3 {
+          color: #4b4b4b;
+          margin-bottom: 11px;
+          font-size: 18px;
+          font-size: 600;
+        }
+
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          background-color: #f5f3f6;
+          border: none;
+          outline: none;
+          padding: 20px;
+          border-radius: 12px;
+          color: #c8c8c8;
+          font-weight: 600;
+
+          &::placeholder {
+            font-weight: 600;
+            color: #c8c8c8;
           }
         }
       }
@@ -344,7 +370,7 @@
               }
 
               &::after {
-                content: "";
+                content: '';
                 display: block;
                 width: 18px;
                 height: 22px;
@@ -403,7 +429,7 @@
       color: #ffffff;
 
       &::before {
-        content: "";
+        content: '';
         display: block;
         width: 30px;
         height: 24px;
