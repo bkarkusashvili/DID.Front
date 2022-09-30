@@ -8,7 +8,7 @@ export const Header = ({ hasUser, logout }) => {
   return (
     <header id="header">
       <Link to="/">
-        <img src={logo} alt="didge logo" />
+        <img src={logo} alt="storiai logo" />
       </Link>
       {/* <select>
         <option value="ENG">ENG</option>

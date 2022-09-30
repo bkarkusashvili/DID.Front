@@ -1,5 +1,5 @@
-import React from "react";
-import "./Policy.scss";
+import React from 'react';
+import './Policy.scss';
 
 export const Policy = () => {
   return (
@@ -8,10 +8,10 @@ export const Policy = () => {
       <p>
         Effective Date: January 11, 2022 <br />
         <br />
-        This privacy notice discloses the privacy practices for did.ge LLC and
-        our website; https://did.ge This privacy notice applies solely to
-        information collected by this website, except where stated otherwise. It
-        will notify you of the following:
+        This privacy notice discloses the privacy practices for storiai.com LLC
+        and our website; https://storiai.com This privacy notice applies solely
+        to information collected by this website, except where stated otherwise.
+        It will notify you of the following:
         <br />
         <br />
         What information we collect;

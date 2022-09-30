@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link } from 'react-router-dom';
+import React from 'react';
 
-import "./footer.scss";
+import './footer.scss';
 
 export const Footer = () => {
   return (
@@ -40,7 +40,7 @@ export const Footer = () => {
             <Link to="/policy">privacy policy</Link>
           </li>
         </ul>
-        <span>© Didge.ai. All rights reserved</span>
+        <span>© Storiai.com. All rights reserved</span>
       </div>
     </footer>
   );

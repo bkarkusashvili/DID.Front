@@ -1,0 +1,123 @@
+server {
+  root /var/www/did/front;
+  index index.html index.htm index.nginx-debian.html;
+
+  server_name www.didge.ai didge.ai;
+
+  location / {
+    try_files $uri $uri/ /index.html =404;
+  }
+
+  listen [::]:443 ssl ipv6only=on; # managed by Certbot
+  listen 443 ssl; # managed by Certbot
+  ssl_certificate /etc/letsencrypt/live/didge.ai/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/didge.ai/privkey.pem; # managed by Certbot
+}
+
+server {
+  listen *:80;
+  server_name www.storiai.com storiai.com;
+
+  index index.html;
+  root /var/www/did/front;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  # listen [::]:443 ssl; # managed by Certbot
+  # listen 443 ssl; # managed by Certbot
+  # ssl_certificate /etc/letsencrypt/live/www.storiai.com/fullchain.pem; # managed by Certbot
+  # ssl_certificate_key /etc/letsencrypt/live/www.storiai.com/privkey.pem; # managed by Certbot
+}
+
+
+server {
+  listen 443 ssl;
+  root /var/www/did/geo;
+  index index.html index.htm index.nginx-debian.html;
+
+  server_name www.did.ge did.ge;
+
+  location / {
+    try_files $uri $uri/ /index.html =404;
+  }
+}
+
+server {
+  listen 443 ssl;
+  server_name api.didge.ai www.api.didge.ai;
+
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-XSS-Protection "1; mode=block";
+  add_header X-Content-Type-Options "nosniff";
+
+  charset utf-8;
+
+  root /var/www/did/api/public;
+  index index.php;
+
+  location / {
+    try_files $uri $uri/ /index.php?$args;
+  }
+
+  location ~ \.php$ {
+    fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+
+  location = /favicon.ico {
+    access_log off; log_not_found off;
+  }
+
+  location = /robots.txt {
+    access_log off; log_not_found off;
+  }
+
+  error_page 404 /index.php;
+
+  ssl_certificate /etc/letsencrypt/live/api.didge.ai/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/api.didge.ai/privkey.pem; # managed by Certbot
+}
+
+server {
+  if ($host = www.api.didge.ai) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = api.didge.ai) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = www.didge.ai) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = didge.ai) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = www.did.ge) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = did.ge) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = www.storiai.com) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = storiai.com) {
+    return 301 https://$host$request_uri;
+  }
+
+  listen 80;
+  listen [::]:80;
+
+  server_name www.storiai.com storiai.com www.did.ge did.ge www.didge.ai didge.ai api.didge.ai www.api.didge.ai;
+  return 404;
+}

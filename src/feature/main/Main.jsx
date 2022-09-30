@@ -1,18 +1,18 @@
-import React from "react";
-import "./Main.scss";
-import bgimg from "../../assets/images/mainBG.png";
-import { Link } from "react-router-dom";
-import socialone from "../../assets/images/social-1.png";
-import socialtwo from "../../assets/images/social-2.png";
-import newsite from "../../assets/images/newsite.png";
-import branding from "../../assets/images/branding.png";
-import dashboard from "../../assets/images/dash.png";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import { useState } from "react";
+import React from 'react';
+import './Main.scss';
+import bgimg from '../../assets/images/mainBG.png';
+import { Link } from 'react-router-dom';
+import socialone from '../../assets/images/social-1.png';
+import socialtwo from '../../assets/images/social-2.png';
+import newsite from '../../assets/images/newsite.png';
+import branding from '../../assets/images/branding.png';
+import dashboard from '../../assets/images/dash.png';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import { useState } from 'react';
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().email('Invalid email').required('Required'),
 });
 
 export const Main = () => {
@@ -95,7 +95,7 @@ export const Main = () => {
               <br />
               <br />
               Start creating your brand or business from zero and build up your
-              digital identity on didgeai.
+              digital identity on storiai.
               <br />
               <br />
               Here you will find all the elements that make up your brand: logo,
@@ -113,9 +113,9 @@ export const Main = () => {
             <h2>Everything under one dashboard</h2>
             <Formik
               initialValues={{
-                firstName: "",
-                lastName: "",
-                email: "",
+                firstName: '',
+                lastName: '',
+                email: '',
               }}
               validationSchema={SignupSchema}
               onSubmit={(values) => {
