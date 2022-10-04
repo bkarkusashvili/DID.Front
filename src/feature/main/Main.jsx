@@ -93,18 +93,19 @@ export const Main = () => {
       <div className="section-4">
         <div className="container">
           <div className="leftContent">
-            <h2>Branding elements applied</h2>
+            <h2>Create and manage your brand</h2>
             <p>
-              If you want to create a brand book fast but do not want to spend a
-              fortune on it then congrats, you are in the right place!
+              If you want to create a brand identity fast but do not want to
+              spend a fortune on it then congrats, you are in the right place!
               <br />
               <br />
-              Start creating your brand or business from zero and build up your
-              digital identity on storiai.
+              Start creating your brand from zero and build up your digital
+              identity on Stori AI.
               <br />
               <br />
-              Here you will find all the elements that make up your brand: logo,
-              colors, visuals, fonts, sizes, style variations and more.
+              Here you will find all the elements that make up your brand:
+              colors, visuals, fonts, style variations and more that can be
+              automatically applied to the digital material you create.
             </p>
           </div>
           <div className="img-wrapper">
