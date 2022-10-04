@@ -1,18 +1,18 @@
-import React from 'react';
-import './Main.scss';
-import bgimg from '../../assets/images/mainBG.png';
-import { Link } from 'react-router-dom';
-import socialone from '../../assets/images/social-1.png';
-import socialtwo from '../../assets/images/social-2.png';
-import newsite from '../../assets/images/newsite.png';
-import branding from '../../assets/images/branding.png';
-import dashboard from '../../assets/images/dash.png';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import { useState } from 'react';
+import React from "react";
+import "./Main.scss";
+import bgimg from "../../assets/images/mainBG.png";
+import { Link } from "react-router-dom";
+import socialone from "../../assets/images/social-1.png";
+import socialtwo from "../../assets/images/social-2.png";
+import newsite from "../../assets/images/newsite.png";
+import branding from "../../assets/images/branding.png";
+import dashboard from "../../assets/images/dash.png";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { useState } from "react";
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string().email("Invalid email").required("Required"),
 });
 
 export const Main = () => {
@@ -23,19 +23,19 @@ export const Main = () => {
         <div className="container">
           <div className="leftContent">
             <span>
-              Enhance your online presence
-              <span>Generate quality content</span>
+              Enhance your storytelling capability to the max
+              <span>Generate digital content instantly</span>
             </span>
             <p>
-              Artificial Intelligence that helps you generate and optimize
-              content for social media and websites
+              Stori AI is a web application powered by artificial intelligence
+              that enables business owners and operators, marketers and
+              copywriters, students and teachers to generate flawless digital
+              material in seconds.
             </p>
             <Link to="/register">Get started</Link>
           </div>
           <div className="list">
-            <span>Social media content</span>
-            <span>Websites</span>
-            <span>Newsletters and Blogs</span>
+            <span>Business presentations and docs</span>
           </div>
         </div>
         <img src={bgimg}></img>
@@ -66,18 +66,21 @@ export const Main = () => {
       <div className="section-3">
         <div className="container">
           <div className="leftContent">
-            <h2>Create Website content</h2>
+            <h2>Delegate and automate business communication</h2>
             <p>
-              Always thought of creating a descent website as the most
-              frustrating thing? Well, not in this case!
+              Always thought of creating business documents as the most time
+              consuming thing? Well, not in this case! Simply delegate it to
+              Stori AI.
               <br />
               <br />
-              Here you can choose from our predesigned website templates for any
-              business and create your professional image on the web.
+              Here you do not start with a blank page. Whether this is a
+              presentation, a poster or writing an article on a specific topic
+              and for a desired outcome.
               <br />
               <br />
-              Our contractor designers will work on your specific requirements
-              and create top notch content for your website.
+              Just instruct Stori AI what you need and we'll generate results
+              instantly, applying your branding style and elements. You can then
+              edit, download, or send the material directly from our dashboard.
             </p>
           </div>
           <div className="img-wrapper">
@@ -113,9 +116,9 @@ export const Main = () => {
             <h2>Everything under one dashboard</h2>
             <Formik
               initialValues={{
-                firstName: '',
-                lastName: '',
-                email: '',
+                firstName: "",
+                lastName: "",
+                email: "",
               }}
               validationSchema={SignupSchema}
               onSubmit={(values) => {
