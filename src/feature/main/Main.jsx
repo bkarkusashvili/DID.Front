@@ -40,7 +40,7 @@ export const Main = () => {
             <span>Blogs, newsletters and articles</span>
           </div>
         </div>
-        <img src={bgimg}></img>
+        <img src={bgimg} />
       </div>
       <div className="section-2">
         <div className="container">
@@ -60,8 +60,8 @@ export const Main = () => {
             </p>
           </div>
           <div className="img-wrapper">
-            <img src={socialone}></img>
-            <img src={socialtwo}></img>
+            <img src={socialone} />
+            <img src={socialtwo} />
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@ export const Main = () => {
             </p>
           </div>
           <div className="img-wrapper">
-            <img src={newsite}></img>
+            <img src={newsite} />
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ export const Main = () => {
             </p>
           </div>
           <div className="img-wrapper">
-            <img src={branding}></img>
+            <img src={branding} />
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@ export const Main = () => {
             </Formik>
           </div>
           <div className="img-wrapper">
-            <img src={dashboard}></img>
+            <img src={dashboard} />
           </div>
         </div>
       </div>
