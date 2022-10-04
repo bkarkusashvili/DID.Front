@@ -36,6 +36,8 @@ export const Main = () => {
           </div>
           <div className="list">
             <span>Business presentations and docs</span>
+            <span>Branded social media posts and ads</span>
+            <span>Blogs, newsletters and articles</span>
           </div>
         </div>
         <img src={bgimg}></img>

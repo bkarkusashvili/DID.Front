@@ -155,6 +155,11 @@
         line-height: 59px;
         color: #552f7c;
         margin-bottom: 45px;
+        @media screen and (max-width: 999px) {
+          font-size: 40px;
+          line-height: 40px;
+          max-width: 100%;
+        }
       }
       p {
         max-width: 460px;
