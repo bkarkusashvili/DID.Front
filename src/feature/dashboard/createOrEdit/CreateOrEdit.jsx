@@ -59,36 +59,40 @@ export const CreateOrEdit = ({ token, logout }) => {
       .catch((err) => err.response.status === 401 && logout());
   };
 
-  const toggleKeyword = (event) => {
-    const value = event.target.value;
+  // const toggleKeyword = (event) => {
+  //   const value = event.target.value;
 
-    if (event.key === 'Enter') {
-      setFieldValue('keywords', [...(values.keywords || []), value]);
-      event.target.value = '';
-    } else if (
-      event.key === 'Backspace' &&
-      value === '' &&
-      values.keywords &&
-      values.keywords.length > 0
-    ) {
-      values.keywords.pop();
-      setFieldValue('keywords', [...values.keywords]);
-    }
-  };
+  //   if (event.key === 'Enter') {
+  //     setFieldValue('keywords', [...(values.keywords || []), value]);
+  //     event.target.value = '';
+  //   } else if (
+  //     event.key === 'Backspace' &&
+  //     value === '' &&
+  //     values.keywords &&
+  //     values.keywords.length > 0
+  //   ) {
+  //     values.keywords.pop();
+  //     setFieldValue('keywords', [...values.keywords]);
+  //   }
+  // };
 
   const generateText = () => {
-    if (!values.keywords || !values.keywords.length) return;
+    if (!values.keyword || !values.keyword.length) return;
     const headers = { Authorization: `Bearer ${token}` };
     setIsTextLoading(true);
 
     Promise.all([
       axios
-        .post(API + 'generate/text', { keywords: values.keywords }, { headers })
+        .post(
+          API + 'generate/text',
+          { keywords: [values.keyword] },
+          { headers }
+        )
         .then((res) => setFieldValue('text', res.data)),
       axios
         .post(
           API + 'generate/image',
-          { keywords: values.keywords },
+          { keywords: [values.keyword] },
           { headers }
         )
         .then((res) => setSuggestedPhotos(res.data)),
@@ -140,7 +144,7 @@ export const CreateOrEdit = ({ token, logout }) => {
               name="title"
               value={values.title}
               onChange={handleChange}
-              placeholder="Enter post Title"
+              placeholder="Project title"
             />
             <button onClick={() => createOrUpdate(true)} />
           </div>
@@ -198,7 +202,7 @@ export const CreateOrEdit = ({ token, logout }) => {
 
         <div className="main-form">
           <div className="type-wrap">
-            <h3>Generate Facebook post</h3>
+            <h3>System works in a test mode with limited functionality.</h3>
             <div className="list">
               {types.map((item, key) => (
                 <div
@@ -220,11 +224,13 @@ export const CreateOrEdit = ({ token, logout }) => {
             <h3>Ask AI to</h3>
             <div className="keywords">
               <div className="list">
-                {values.keywords &&
-                  values.keywords.map((item, kye) => (
-                    <span key={kye} children={item} />
-                  ))}
-                <input type="text" onKeyUp={toggleKeyword} />
+                <input
+                  type="text"
+                  name="keyword"
+                  value={values.keyword}
+                  onChange={handleChange}
+                  placeholder="Write an article about health benefits of eating only fruit."
+                />
               </div>
               <button
                 disabled={isTextLoading}

@@ -1,6 +1,10 @@
 #CreateOrEdit {
   padding: 100px 50px 90px;
 
+  @media screen and (max-width: 1060px) {
+    padding: 30px 20px;
+  }
+
   .head {
     display: flex;
     flex-direction: column;
@@ -13,9 +17,18 @@
       justify-content: space-between;
       margin-top: 10px;
 
+      @media screen and (max-width: 1060px) {
+        flex-direction: column;
+      }
+
       .title-wrap {
         width: 460px;
         display: flex;
+
+        @media screen and (max-width: 1060px) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
 
         input {
           flex: 1;
@@ -63,6 +76,11 @@
           &.publish {
             background-color: #06c97e;
             max-width: 270px;
+
+            @media screen and (max-width: 1060px) {
+              max-width: 100%;
+              width: 100%;
+            }
           }
         }
       }
@@ -74,7 +92,16 @@
     grid-template-columns: 1fr 3fr;
     grid-gap: 20px;
 
+    @media screen and (max-width: 1060px) {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+
     .image-form {
+      @media screen and (max-width: 1060px) {
+        grid-row: 2;
+      }
+
       .uploadedImg {
         border: 1px solid #c8c8c8;
         border-bottom: none;
@@ -141,18 +168,31 @@
         img {
           margin-bottom: 20px;
           width: 420px;
-          height: 222px;
           border-radius: 12px;
           background-color: #cbcbcb;
           border: none;
           object-fit: cover;
+          aspect-ratio: 420/222;
+
+          @media screen and (max-width: 1060px) {
+            width: 100%;
+          }
         }
       }
     }
 
     .main-form {
+      @media screen and (max-width: 1060px) {
+        display: flex;
+        flex-direction: column;
+      }
+
       .type-wrap {
         margin-bottom: 30px;
+
+        @media screen and (max-width: 1060px) {
+          order: 2;
+        }
 
         h3 {
           color: #4b4b4b;
@@ -164,7 +204,12 @@
         .list {
           display: flex;
 
+          @media screen and (max-width: 1060px) {
+            flex-direction: column;
+          }
+
           .item {
+            flex-shrink: 0;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -174,8 +219,17 @@
             border-radius: 12px;
             padding: 0 20px;
 
+            @media screen and (max-width: 1060px) {
+              margin-right: 0;
+              margin-bottom: 15px;
+            }
+
             &:last-of-type {
               margin-right: 0;
+
+              @media screen and (max-width: 1060px) {
+                margin-bottom: 0;
+              }
             }
 
             span {
@@ -187,6 +241,10 @@
 
       .keyword-wrap {
         margin-bottom: 40px;
+
+        @media screen and (max-width: 1060px) {
+          order: 1;
+        }
 
         h3 {
           color: #4b4b4b;
@@ -257,6 +315,10 @@
       .text-wrap {
         margin-bottom: 40px;
 
+        @media screen and (max-width: 1060px) {
+          order: 1;
+        }
+
         &:last-of-type {
           margin-bottom: 0;
         }
@@ -306,6 +368,10 @@
       .input-wrap {
         margin-bottom: 40px;
 
+        @media screen and (max-width: 1060px) {
+          order: 3;
+        }
+
         &:last-of-type {
           margin-bottom: 0;
         }
@@ -337,6 +403,10 @@
 
       .images-wrap {
         margin-bottom: 48px;
+
+        @media screen and (max-width: 1060px) {
+          order: 3;
+        }
 
         h3 {
           color: #4b4b4b;
@@ -408,6 +478,11 @@
   .file-input {
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 1060px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
     span {
       margin-right: 30px;
