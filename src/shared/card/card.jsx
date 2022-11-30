@@ -13,7 +13,7 @@ export const Card = ({ data, color }) => {
           {data.title} - {moment(data.created_at).format('DD.MM.YYYY')}
         </h2>
         <div className="imgwraper">
-          <img src={img} alt="Social"></img>
+          <img src={data.suggestedPhoto || img} alt="Social"></img>
           <span>status</span>
         </div>
       </div>

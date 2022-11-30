@@ -1,6 +1,6 @@
 #auth {
   flex: 1;
-  background-color: #552f7c;
+  background-color: #62718e;
   padding: 82px 123px 82px 165px;
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
       font-weight: bold;
       font-size: 20px;
       margin-bottom: 20px;
-      color: #552f7c;
+      color: #62718e;
       padding-bottom: 20px;
       border-bottom: 1px solid #eeecf1;
     }
@@ -57,10 +57,10 @@
 
       &.login,
       &.reset {
-        background-color: #552f7c;
+        background-color: #62718e;
 
         &:hover {
-          background-color: darken(#552f7c, 8);
+          background-color: darken(#62718e, 8);
         }
       }
 
@@ -69,10 +69,10 @@
       }
 
       &.register {
-        background-color: #06c97e;
+        background-color: #63bdc6;
 
         &:hover {
-          background-color: darken(#06c97e, 8);
+          background-color: darken(#63bdc6, 8);
         }
       }
     }
@@ -82,7 +82,7 @@
       text-align: center;
       margin-top: 20px;
       font-weight: 600;
-      color: #06c97e;
+      color: #63bdc6;
     }
 
     .other-option {
@@ -91,7 +91,7 @@
       font-weight: bold;
 
       a {
-        color: #552f7c;
+        color: #62718e;
         text-decoration: none;
       }
     }

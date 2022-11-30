@@ -81,20 +81,24 @@ export const CreateOrEdit = ({ token, logout }) => {
     const headers = { Authorization: `Bearer ${token}` };
     setIsTextLoading(true);
 
+    let imageKeywords = values.keyword
+      .split(' ')
+      .filter((item) => item.startsWith('#'))
+      .map((item) => item.slice(1));
+    if (!imageKeywords.length) {
+      imageKeywords = [values.keyword];
+    }
+
     Promise.all([
       axios
         .post(
           API + 'generate/text',
-          { keywords: [values.keyword] },
+          { keywords: [values.keyword.replaceAll(/#\w+/g, '')] },
           { headers }
         )
         .then((res) => setFieldValue('text', res.data)),
       axios
-        .post(
-          API + 'generate/image',
-          { keywords: [values.keyword] },
-          { headers }
-        )
+        .post(API + 'generate/image', { keywords: imageKeywords }, { headers })
         .then((res) => setSuggestedPhotos(res.data)),
     ]).finally(() => setIsTextLoading(false));
   };

@@ -49,16 +49,16 @@
         font-weight: 800;
 
         &:nth-child(1) {
-          background-color: #06c97e;
+          background-color: #63bdc6;
 
           &:hover {
-            background-color: #0de18f;
+            background-color: darken(#63bdc6, 8);
           }
         }
         &:nth-child(2) {
-          background-color: #552f7c;
+          background-color: #62718e;
           &:hover {
-            background-color: #7941b2;
+            background-color: darken(#62718e, 8);
           }
         }
         &:nth-child(3) {
@@ -124,7 +124,7 @@
       border: none;
       outline: none;
       border-radius: 0 12px 12px 0;
-      background-color: #06c97e;
+      background-color: #63bdc6;
       padding: 20px 0;
     }
 
@@ -135,12 +135,12 @@
   }
   select {
     border-radius: 12px;
-    border: 1px solid #552f7c;
+    border: 1px solid #62718e;
     padding: 20px 0;
     outline: none;
     appearance: none;
     font-size: 16px;
-    color: #552f7c;
+    color: #62718e;
     line-height: 20px;
     background: url(/assets/images/arrow.png);
     background-repeat: no-repeat;
@@ -225,7 +225,7 @@
   }
   .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-top: 76px;
 

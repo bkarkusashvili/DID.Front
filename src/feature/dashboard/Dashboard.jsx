@@ -16,7 +16,7 @@ const post = [
   {
     title: 'Website',
     type: 'website',
-    color: '#552F7C',
+    color: '#62718E',
   },
   {
     title: 'facebook',
@@ -64,6 +64,8 @@ export const Dashboard = ({ token, logout }) => {
       .catch((err) => err.response.status === 401 && logout());
   }, []);
 
+  console.log(list);
+
   return (
     <div id="dashboard">
       <div className="contentcontrol">
@@ -99,8 +101,8 @@ export const Dashboard = ({ token, logout }) => {
         spaceBetween={50}
         slidesPerView={3}
         autoplay={{ delay: 2000 }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
       >
         {post.map((el, key) => (
           <SwiperSlide
