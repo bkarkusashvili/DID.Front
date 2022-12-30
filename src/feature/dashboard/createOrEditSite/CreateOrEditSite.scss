@@ -76,9 +76,9 @@
   }
 
   .form {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .image-form {
       .uploadedImg {
@@ -414,5 +414,71 @@
         background-size: 100%;
       }
     }
+  }
+}
+.templates {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .heads {
+      margin-bottom: 20px;
+
+      span {
+        margin-right: 15px;
+      }
+    }
+
+    img {
+      object-fit: contain;
+      max-height: 300px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+.step {
+  width: 700px;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .next-step,
+  .prev-step {
+    margin-top: 50px;
+    cursor: pointer;
+    width: 270px;
+    height: 60px;
+    background-color: #06c97e;
+    border-radius: 25px;
+    border: none;
+    color: #ffffff;
+  }
+
+  .prev-step {
+    background-color: transparent;
+    color: #06c97e;
+  }
+}
+
+.MuiFormControl-root {
+  margin-bottom: 15px !important;
+
+  &:last-of-type {
+    margin-bottom: 0;
   }
 }
