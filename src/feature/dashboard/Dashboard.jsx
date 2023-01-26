@@ -50,20 +50,16 @@ export const Dashboard = ({ token, logout }) => {
   const [type, setType] = useState();
   const [list, setList] = useState([]);
 
-  // useEffect(() => {
-  //   const data = !type ? post : post.filter((item) => item.type === type);
-
-  //   setList(data);
-  // }, [type]);
-
-  // console.log(list);
-
   useEffect(() => {
     axios
-      .get(API + 'get-all', { headers: { Authorization: `Bearer ${token}` } })
+      .get(API + 'get-all-site', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => setList(res.data))
       .catch((err) => err.response.status === 401 && logout());
   }, []);
+
+  console.log(list);
 
   return (
     <div id="dashboard">

@@ -13,12 +13,12 @@ export const Card = ({ data, color }) => {
           {data.title} - {moment(data.created_at).format('DD.MM.YYYY')}
         </h2>
         <div className="imgwraper">
-          <img src={img} alt="Social"></img>
-          <span>სტატუსი</span>
+          <img src={data.template.image || img} alt="Social"></img>
+          <span>{data.status}</span>
         </div>
       </div>
       <div className="bottom">
-        <p>Accounting & Financial Services</p>
+        <p>{}</p>
         <span>domain.com</span>
         <div className="buttons">
           <Link to={`/edit/social/${data.id}`} children="რედაქტირება" />

@@ -1,20 +1,35 @@
 server {
-  root /var/www/did/front;
-  index index.html index.htm index.nginx-debian.html;
+  if ($host = www.didge.ai) {
+    return 301 https:///storiai.ge$request_uri;
+  }
+
+  if ($host = didge.ai) {
+    return 301 https:///storiai.ge$request_uri;
+  }
 
   server_name www.didge.ai didge.ai;
-
-  location / {
-    try_files $uri $uri/ /index.html =404;
-  }
 
   listen [::]:443 ssl ipv6only=on; # managed by Certbot
   listen 443 ssl; # managed by Certbot
   ssl_certificate /etc/letsencrypt/live/didge.ai/fullchain.pem; # managed by Certbot
   ssl_certificate_key /etc/letsencrypt/live/didge.ai/privkey.pem; # managed by Certbot
+}
 
-  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+server {
+  listen [::]:443 ssl; # managed by Certbot
+  listen 443 ssl; # managed by Certbot
+  # listen 80;
+  server_name www.storiai.com storiai.com;
+
+  index index.html;
+  root /var/www/did/front;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  ssl_certificate /etc/letsencrypt/live/storiai.com/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/storiai.com/privkey.pem; # managed by Certbot
 }
 
 server {
@@ -31,21 +46,14 @@ server {
 
 server {
   listen 443 ssl;
-  server_name new.didge.ai www.new.didge.ai;
-  add_header X-Frame-Options "SAMEORIGIN";
-  add_header X-XSS-Protection "1; mode=block";
-  add_header X-Content-Type-Options "nosniff";
+  root /var/www/did/geo;
+  index index.html index.htm index.nginx-debian.html;
 
-  charset utf-8;
+  server_name www.test.did.ge test.did.ge;
 
   location / {
-    root /var/www/did/front;
-    index index.html;
     try_files $uri $uri/ /index.html =404;
   }
-
-  ssl_certificate /etc/letsencrypt/live/new.didge.ai/fullchain.pem; # managed by Certbot
-  ssl_certificate_key /etc/letsencrypt/live/new.didge.ai/privkey.pem; # managed by Certbot
 }
 
 server {
@@ -87,21 +95,7 @@ server {
 }
 
 server {
-  listen 80;
-  listen [::]:80;
-  server_name api.didge.ai www.api.didge.ai;
-  return 301 https://api.didge.ai$request_uri;
-}
-
-server {
-  listen 80;
-  listen [::]:80;
-  server_name new.didge.ai www.new.didge.ai;
-  return 301 https://new.didge.ai$request_uri;
-}
-
-server {
-  if ($host = new.didge.ai) {
+  if ($host = www.api.didge.ai) {
     return 301 https://$host$request_uri;
   }
 
@@ -110,11 +104,11 @@ server {
   }
 
   if ($host = www.didge.ai) {
-    return 301 https://$host$request_uri;
+    return 301 https:///storiai.com$request_uri;
   }
 
   if ($host = didge.ai) {
-    return 301 https://$host$request_uri;
+    return 301 https:///storiai.com$request_uri;
   }
 
   if ($host = www.did.ge) {
@@ -125,9 +119,24 @@ server {
     return 301 https://$host$request_uri;
   }
 
-  listen 80;
-  listen [::]:80;
+  if ($host = www.test.did.ge) {
+    return 301 https://$host$request_uri;
+  }
 
-  server_name www.did.ge did.ge www.didge.ai didge.ai api.didge.ai www.api.didge.ai new.didge.ai www.new.didge.ai;
+  if ($host = test.did.ge) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = www.storiai.com) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = storiai.com) {
+    return 301 https://$host$request_uri;
+  }
+
+  listen 80;
+
+  server_name www.storiai.com storiai.com www.did.ge did.ge www.didge.ai didge.ai api.didge.ai www.api.didge.ai;
   return 404;
 }
