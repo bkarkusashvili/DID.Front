@@ -46,7 +46,7 @@ server {
 
 server {
   listen 443 ssl;
-  root /var/www/did/geo;
+  root /var/www/did/test;
   index index.html index.htm index.nginx-debian.html;
 
   server_name www.test.did.ge test.did.ge;
