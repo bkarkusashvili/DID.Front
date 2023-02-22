@@ -1,0 +1,15 @@
+.d-button {
+  cursor: pointer;
+  border: none;
+  background-color: #06c97e;
+  border-radius: 25px;
+  color: #ffffff;
+  font-size: 16px;
+  height: 60px;
+  width: 270px;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: darken(#06c97e, 8);
+  }
+}

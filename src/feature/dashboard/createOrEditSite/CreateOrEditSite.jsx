@@ -34,7 +34,7 @@ export const CreateOrEditSite = ({ token }) => {
     console.log(template);
 
     axios.post(API + 'site', { template }, { headers }).then((res) => {
-      console.log(res.data);
+      navigate('/dashboard');
     });
   };
 

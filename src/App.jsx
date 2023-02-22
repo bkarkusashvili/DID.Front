@@ -3,7 +3,15 @@ import { Mainlayout, PrivateRoute, PublicRoute } from './core';
 import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { Dashboard, Auth, Main, Terms, Policy, CreateOrEdit } from './feature';
+import {
+  Dashboard,
+  Auth,
+  Main,
+  Terms,
+  Policy,
+  CreateOrEdit,
+  TypeForm,
+} from './feature';
 
 import './main.scss';
 import { API } from './env';
@@ -50,6 +58,12 @@ function App() {
                 <Dashboard token={token} logout={() => updateToken(null)} />
               }
             />
+          }
+        />
+        <Route
+          path="form/:id"
+          element={
+            <PrivateRoute user={token} children={<TypeForm token={token} />} />
           }
         />
         <Route

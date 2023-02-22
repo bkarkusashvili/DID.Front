@@ -59,8 +59,6 @@ export const Dashboard = ({ token, logout }) => {
       .catch((err) => err.response.status === 401 && logout());
   }, []);
 
-  console.log(list);
-
   return (
     <div id="dashboard">
       <div className="contentcontrol">

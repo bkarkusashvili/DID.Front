@@ -1,0 +1,26 @@
+.d-imageUpload {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 190px;
+  border-radius: 8px;
+  background-color: #7445a5;
+  margin-bottom: 40px;
+
+  img {
+    margin-bottom: 14px;
+    width: 33px;
+  }
+
+  .imageUpload-content {
+    font-size: 18px;
+    color: #ffffff;
+
+    span {
+      color: #06c97e;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.d-buttonGroup {
+  display: flex;
+  gap: 20px;
+
+  button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 0 20px;
+    background-color: #7445a5;
+
+    &.active {
+      background-color: #8b48d1;
+    }
+  }
+}
