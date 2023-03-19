@@ -47,8 +47,11 @@ const post = [
 ];
 
 export const Dashboard = ({ token, logout }) => {
-  const [type, setType] = useState();
   const [list, setList] = useState([]);
+
+  const onDelete = (id) => {
+    setList([...list.filter((el) => el.id !== id)]);
+  };
 
   useEffect(() => {
     axios
@@ -107,7 +110,13 @@ export const Dashboard = ({ token, logout }) => {
       </Swiper> */}
       <div className="grid-container">
         {list.map((el, key) => (
-          <Card key={key} color="#1877F1" data={el} />
+          <Card
+            key={key}
+            site={el}
+            token={token}
+            type="dashboard"
+            onDelete={onDelete}
+          />
         ))}
       </div>
     </div>

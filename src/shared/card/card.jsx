@@ -1,34 +1,119 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-import img from '../../assets/images/cover.png';
-import './card.scss';
-import { WEB } from '../../env';
+import './Card.scss';
+import { API, WEB } from '../../env';
+import { Eye, Heart, Check, Delete, Edit } from '../SVG';
 
-export const Card = ({ data, color }) => {
+const prices = [35, 49, 69];
+const sizes = ['S', 'M', 'L'];
+
+export const Card = ({
+  type,
+  site,
+  template,
+  category,
+  onChoose,
+  onDelete,
+  token,
+}) => {
+  const [fav, setFav] = useState(false);
+  const navigate = useNavigate();
+
+  template = site ? site.template : template;
+  category = site ? site.category : category;
+
+  const updateFavorite = () => {
+    const headers = { Authorization: `Bearer ${token}` };
+
+    axios
+      .post(
+        API + 'favorite',
+        { template: template.id, category: category.id },
+        { headers }
+      )
+      .then(() => setFav(!fav));
+  };
+
+  const deleteSite = () => {
+    const headers = { Authorization: `Bearer ${token}` };
+
+    axios
+      .delete(API + 'site/' + site.id, { headers })
+      .then(() => onDelete(site.id));
+  };
+
   return (
-    <div className="card">
-      <div className="top">
-        <h2 style={{ backgroundColor: color }}>
-          {data.template.categories[0].title} -{' '}
-          {moment(data.created_at).format('DD.MM.YYYY')}
-        </h2>
-        <div className="imgwraper">
-          <img
-            src={WEB + 'storage/' + data.template.image || img}
-            alt="Social"
-          ></img>
-          <span>{data.status}</span>
+    <div key={template.id} className="card-item">
+      <a
+        className="image-wrap"
+        href={template.old_url}
+        rel="noreferrer"
+        target="_blank"
+      >
+        <img src={WEB + 'storage/' + template.image} />
+      </a>
+      <div className="content">
+        <div className="head">
+          <h3>
+            {category.title} {sizes[template.size]} - {prices[template.size]}{' '}
+            ლარი
+          </h3>
         </div>
-      </div>
-      <div className="bottom">
-        {/* <p>{data.template.categories.map((item) => item.title).join(' & ')}</p> */}
-        {/* <span>domain.com</span> */}
-        <div className="buttons">
-          <Link to={`/form/${data.id}`} children="შევსება" />
-          {/* <Link to={`/edit/social/${data.id}`} children="რედაქტირება" /> */}
-          {/* <button>გაგზავნა</button> */}
+        <div className="footer">
+          <div className="info">
+            <div className="info-item">
+              ზომა: <span>{sizes[template.size]}</span>
+            </div>
+            <div className="info-item">
+              ფასი: <span>{prices[template.size]} ლარი</span>
+            </div>
+          </div>
+          <div className="action">
+            <a
+              href={template.old_url}
+              className="action-item"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <Eye />
+            </a>
+            {type === 'choose' && (
+              <>
+                <button
+                  className={['action-item', fav && 'active'].join(' ')}
+                  onClick={updateFavorite}
+                >
+                  <Heart />
+                </button>
+                <button
+                  className="action-item action-item-last choose"
+                  onClick={onChoose}
+                >
+                  <Check />
+                  არჩევა
+                </button>
+              </>
+            )}
+            {type === 'dashboard' && (
+              <>
+                <button
+                  className={['action-item delete', fav && 'active'].join(' ')}
+                  onClick={deleteSite}
+                >
+                  <Delete />
+                </button>
+                <button
+                  className="action-item action-item-last edit"
+                  onClick={() => navigate(`/form/${site.id}`)}
+                >
+                  <Edit />
+                  შევსება
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

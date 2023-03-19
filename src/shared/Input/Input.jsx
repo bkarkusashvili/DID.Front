@@ -17,7 +17,7 @@ export const Input = ({
       name={name}
       placeholder={placeholder}
       value={value}
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       onBlur={onBlur}
     />
   );

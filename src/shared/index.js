@@ -1,4 +1,4 @@
-export * from './card/card';
+export * from './Card/Card';
 export * from './form/form';
 export * from './siteready/siteReady';
 export * from './radio/Radio';
@@ -7,3 +7,4 @@ export * from './Select/Select';
 export * from './Input/Input';
 export * from './ButtonGroup/ButtonGroup';
 export * from './ImageUpload/ImageUpload';
+export * from './SVG';

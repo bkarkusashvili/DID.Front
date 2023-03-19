@@ -1,9 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { KeyboardArrowDown } from '@mui/icons-material';
+import { KeyboardArrowDown, Close } from '@mui/icons-material';
 import './Select.scss';
 import Scrollbars from 'react-custom-scrollbars';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 export const Select = ({ options, name, value, onChange }) => {
+  const ref = useDetectClickOutside({
+    onTriggered: (e) =>
+      !e.target.classList.contains('d-option') && setActive(false),
+  });
   const [active, setActive] = useState(false);
   const [search, setSearch] = useState('');
   const list = useMemo(
@@ -24,23 +29,42 @@ export const Select = ({ options, name, value, onChange }) => {
     <div className="d-select">
       <label className="field">
         <input
+          ref={ref}
           type="text"
           name={name}
+          value={search}
           onFocus={() => setActive(true)}
-          onBlur={() => setActive(false)}
-          onInput={(e) => setSearch(e.target.value)}
+          onInput={(e) => {
+            setSearch(e.target.value);
+            onChange();
+          }}
         />
-        <KeyboardArrowDown style={{ color: '#FFFFFF' }} fontSize={'large'} />
+        {search ? (
+          <Close
+            style={{ color: '#FFFFFF' }}
+            fontSize={'large'}
+            onClick={() => {
+              setSearch('');
+              onChange();
+            }}
+          />
+        ) : (
+          <KeyboardArrowDown style={{ color: '#FFFFFF' }} fontSize={'large'} />
+        )}
       </label>
       <div className={['list', active ? 'active' : ''].join(' ')}>
         <Scrollbars>
           {list.map((option, key) => (
             <div
               key={key}
-              className={['item', option.key === value ? 'active' : ''].join(
-                ' '
-              )}
-              onClick={() => onChange(option.key)}
+              className={[
+                'item d-option',
+                option.key === value ? 'active' : '',
+              ].join(' ')}
+              onClick={() => {
+                onChange(option.key);
+                setActive(false);
+              }}
             >
               {option.label}
             </div>
