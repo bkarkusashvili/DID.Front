@@ -1,25 +1,17 @@
-import React from 'react';
-import { WEB } from '../../../../env';
+import {Route, BrowserRouter, Routes} from "react-router-dom";
+import SignIn from "./SignIn";
 
-import './SocialLogin.scss';
-
-export const SocialLogin = () => {
+export function SocialLogin() {
   return (
-    <div className="social-login">
-      <ul>
-        <li>
-          <a href={`${WEB}auth/google/redirect`}>Login with Google</a>
-        </li>
-        <li>
-          <a href={`${WEB}auth/facebook/redirect`}>Login with facebook</a>
-        </li>
-        {/* <li>
-          <a href="#">Login with Apple</a>
-        </li> */}
-      </ul>
-      <div className="or">
-        <span>ან</span>
-      </div>
-    </div>
+    //   <BrowserRouter>
+    //       <Routes>
+    //           <Route path="/login" element={<SignIn />}></Route>
+    //           <Route path="/auth/google" element={<GoogleCallback />}></Route>
+    //       </Routes>
+    //   </BrowserRouter>
+
+<>
+    <SignIn />
+</>
   );
-};
+}

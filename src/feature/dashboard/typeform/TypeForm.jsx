@@ -208,6 +208,10 @@ const Steps = [
   },
 ];
 
+
+
+
+
 export const TypeForm = ({ token }) => {
   const [step, setStep] = React.useState(0);
   const navigate = useNavigate();
@@ -215,37 +219,81 @@ export const TypeForm = ({ token }) => {
   const { values, setFieldValue, setValues } = useFormik({
     initialValues: {},
   });
-
+  
   const nextStep = () => {
     if (step < Steps.length - 1) {
       setStep(step + 1);
     } else {
       const headers = { Authorization: `Bearer ${token}` };
       const data = { ...values };
-
+      
       if (typeof data.logo === 'string') {
         delete data.logo;
       }
-
+      
       if (typeof data.businessImages === 'string') {
         delete data.businessImages;
       }
+      
+      
+      
+      const storedProduct = localStorage.getItem('product');
+      const parsedProduct = JSON.parse(storedProduct); // Parse the JSON string
+      const prices = [35, 49, 69];
 
-      axios
-        .post(API + 'site/update/' + id, jsonToFormData(data), { headers })
-        .then(() => navigate('/dashboard'));
+      const create_product_data = {
+        name:parsedProduct.template.id + " " + parsedProduct.template.title,
+        description: JSON.stringify(data),
+        imageUrl:null,
+        price: prices[parsedProduct.template.size],
+        currency: 'GEL',
+        occurrenceType: 'Month',
+        occurrenceNumber: 1,
+        occurrenceDuration: '36',
+        freeTrial: 1,
+        numberOfFailedRetry: 3
+      }
+      axios.post(API+'products', { create_product_data: create_product_data } )
+        .then(res => {
+
+          const subscription_product_id = res.data.data.id
+          console.log(res)
+          console.log(res.data.data.id)
+
+          
+          
+          //წარმატებული საბსქრიბშენ პროდუქტის შექმნის შემდეგ გზავნის მეილს 
+          const user = JSON.parse(localStorage.getItem('user_data'));
+          if (user && user.email) {
+            axios.post(API + 'send-mail', { email: user.email })
+              .then(res => {
+                console.log(res.data['message']);
+              })
+              .catch(error => {
+                console.error('Error sending email:', error);
+              });
+          } else {
+            console.error('User email not found in localStorage.');
+          }
+          axios
+          .post(API + 'site/update/' + id, { data, subscription_product_id }, { headers })
+          .then(() => navigate('/dashboard'));
+        })
+        .catch(error=>{
+          console.error(error)
+        })
     }
   };
-
-  useEffect(() => {
+    useEffect(() => {
     const headers = { Authorization: `Bearer ${token}` };
 
     axios
       .get(API + 'site/' + id, { headers })
-      .then(({ data }) => data.data && setValues(data.data));
+      .then(
+        ({ data }) => data.data && setValues(data.data)
+        );
   }, [id]);
 
-  console.log(values);
 
   return (
     <div id="type-form">

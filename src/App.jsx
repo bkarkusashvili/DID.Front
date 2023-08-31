@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { Mainlayout, PrivateRoute, PublicRoute } from './core';
 import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom';
+import {GoogleCallback} from './feature/auth/components/socialLogin/GoogleCallback.jsx'
 import axios from 'axios';
 
 import {
@@ -18,20 +19,37 @@ import { API } from './env';
 import { CreateOrEditSite } from './feature/dashboard/createOrEditSite/CreateOrEditSite';
 
 function App() {
+
   const [search] = useSearchParams();
   const [token, setToken] = useState(
-    search.get('token') || localStorage.getItem('token')
-  );
-  const navigate = useNavigate();
+    search.get('access_token') || localStorage.getItem('access_token')
+    );
+
+    const navigate = useNavigate();
 
   const updateToken = (newToken) => {
     if (newToken === null) {
-      localStorage.removeItem('token');
+      localStorage.removeItem('access_token');
     } else {
-      localStorage.setItem('token', newToken);
+      localStorage.setItem('access_token', newToken);
     }
 
     setToken(newToken);
+    console.log(newToken)
+  };
+
+  const [userId, setUserId] = useState(
+    search.get('user_id') || localStorage.getItem('user_id') 
+  )
+  const updateUserId = (newUserId) => {
+    if (newUserId === null) {
+      localStorage.removeItem('user_id');
+    } else {
+      localStorage.setItem('user_id', newUserId);
+    }
+
+    setUserId(newUserId);
+    console.log(newUserId)
   };
 
   const logout = () => {
@@ -41,6 +59,7 @@ function App() {
       })
       .then(() => {
         updateToken(null);
+        updateUserId(null)
         navigate('/');
       })
       .catch(() => {});
@@ -55,7 +74,7 @@ function App() {
             <PrivateRoute
               user={token}
               children={
-                <Dashboard token={token} logout={() => updateToken(null)} />
+                <Dashboard token={token}  logout={() => updateToken(null)} />
               }
             />
           }
@@ -121,16 +140,17 @@ function App() {
           element={
             <PublicRoute
               user={token}
-              children={<Auth type="login" updateToken={updateToken} />}
+              children={<Auth type="login" updateToken={updateToken} updateUserId={updateUserId} />}
             />
           }
         />
+        <Route path="/auth/google" element={<GoogleCallback updateToken={updateToken}  updateUserId={updateUserId}  />}></Route>
         <Route
           path="register"
           element={
             <PublicRoute
               user={token}
-              children={<Auth type="register" updateToken={updateToken} />}
+              children={<Auth type="register" updateToken={updateToken} updateUserId={updateUserId} />}
             />
           }
         />
@@ -139,7 +159,7 @@ function App() {
           element={
             <PublicRoute
               user={token}
-              children={<Auth type="reset" updateToken={updateToken} />}
+              children={<Auth type="reset" updateToken={updateToken} updateUserId={updateUserId} />}
             />
           }
         />

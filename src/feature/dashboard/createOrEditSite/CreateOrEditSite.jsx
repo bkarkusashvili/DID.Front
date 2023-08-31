@@ -8,6 +8,10 @@ import './CreateOrEditSite.scss';
 
 import { Button, Select, Card } from '../../../shared';
 
+
+import data from './data.json'; //sanam dbs gavasworeb bliad 
+
+
 export const CreateOrEditSite = ({ token }) => {
   const [step, setStep] = useState(1);
   const [list, setList] = useState([]);
@@ -18,6 +22,9 @@ export const CreateOrEditSite = ({ token }) => {
     [(step, category)]
   );
   const navigate = useNavigate();
+
+
+  
 
   const updateStep = (key) => setCategory(key >= 0 ? list[key] : '');
 
@@ -33,10 +40,10 @@ export const CreateOrEditSite = ({ token }) => {
     const headers = { Authorization: `Bearer ${token}` };
 
     axios.get(API + 'template', { headers }).then((res) => {
-      const data = res.data.map((item, key) => ({ ...item, key }));
+      const dataFromJson = data.map((item, key) => ({ ...item, key }));
 
-      setList(data);
-      setOptions(data.map((item) => ({ key: item.key, label: item.title })));
+      setList(dataFromJson);
+      setOptions(dataFromJson.map((item) => ({ key: item.key, label: item.title })));
     });
   }, []);
 

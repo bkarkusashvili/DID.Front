@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { PaymentTypeCard } from './PaymentTypeCard';
+import exit from '../../assets/images/exit.png'
 
-import './Card.scss';
+import './card.scss';
+import './paymenttypecard.css';
 import { API, WEB } from '../../env';
 import { Eye, Heart, Check, Delete, Edit } from '../SVG';
 
@@ -17,9 +20,45 @@ export const Card = ({
   onChoose,
   onDelete,
   token,
+  list,
 }) => {
   const [fav, setFav] = useState(false);
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    localStorage.setItem('product', JSON.stringify(site))
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    localStorage.removeItem('product')
+  };
+
+  const paymentType = [
+    {
+      id: "1",
+      paymentType: "subscriptionpay" ,
+      name:"subscription",
+      descriptionText: "some description text",
+      duration:1
+    },
+    {
+      id: "2",
+      paymentType:"justpay" ,
+      name:'6 month',
+      descriptionText: "some description text",
+      duration:6
+    },
+    {
+      id: "3",
+      paymentType:"justpay" ,
+      name:'12 month',
+      descriptionText: "some description text",
+      duration:12
+    }
+  ]
 
   template = site ? site.template : template;
   category = site ? site.category : category;
@@ -41,9 +80,19 @@ export const Card = ({
 
     axios
       .delete(API + 'site/' + site.id, { headers })
-      .then(() => onDelete(site.id));
+      .then(
+        () => onDelete(site.id)
+        // console.log("ppp")
+        );
   };
 
+  const openterms = () =>{
+    return(
+      <div>
+        hello
+      </div>
+    )
+  }
   return (
     <div key={template.id} className="card-item">
       <a
@@ -97,25 +146,71 @@ export const Card = ({
               </>
             )}
             {type === 'dashboard' && (
-              <>
+              <div className="action">
+                {site.status === 'draft' ? (
+                  <>
+                    <button
+                      className={['action-item', fav && 'active'].join(' ')}
+                      onClick={deleteSite}
+                    >
+                      <Delete />
+                    </button>
+                    <button
+                      className="action-item action-item-last edit"
+                      onClick={() => {
+                        console.log(site.template)
+                        localStorage.setItem('product', JSON.stringify(site) )
+                        navigate(`/form/${site.id}`)}
+                      } 
+                    >
+                      <Edit />
+                      შევსება
+                    </button>
+                  </>
+                ) : site.status === 'pending' ? (
+                <div>
                 <button
-                  className={['action-item delete', fav && 'active'].join(' ')}
-                  onClick={deleteSite}
-                >
-                  <Delete />
-                </button>
-                <button
-                  className="action-item action-item-last edit"
-                  onClick={() => navigate(`/form/${site.id}`)}
+                  className="action-item action-item-last"
+                  onClick={openModal}
                 >
                   <Edit />
-                  შევსება
+                  დაიწყე გადახდა
                 </button>
-              </>
+
+                {isModalOpen && (
+                    <div className="modal-content">
+                      <h1>Get a plan for your project</h1>
+
+                      <div className='box-container' >
+                        {paymentType.map((item) => (
+                          <PaymentTypeCard
+                            key={item.id} // Remember to provide a unique key for each item when using map
+                            id={item.id}
+                            name={item.name}
+                            descriptionText={item.descriptionText}
+                            duration={item.duration}
+                            price={prices[template.size]}
+                            paymentType = {item.paymentType}
+                          />
+                        ))}
+                      </div>
+
+                      <button  className="exit" onClick={closeModal}>
+                          <img src={exit} alt="" />
+                      </button>
+                    </div>
+                )}
+                </div>
+                ) : site.status === 'active' ? (
+                  <> </>
+                ) : null}
+              </div>
             )}
+
           </div>
         </div>
       </div>
     </div>
   );
 };
+

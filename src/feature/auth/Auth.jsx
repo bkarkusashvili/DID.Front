@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import  {useNavigate}  from 'react-router-dom';
 
 import './Auth.scss';
 
-import { Remember, SocialLogin } from './components';
+import { Remember,  } from './components';
+import {SocialLogin} from './components'
 import { API } from '../../env';
+import SignIn from './components/socialLogin/SignIn';
+
 
 const form = {
   login: [
@@ -105,7 +108,9 @@ const contents = {
   },
 };
 
-export const Auth = ({ type, updateToken }) => {
+
+
+export const Auth = ({ type, updateToken, updateUserId }) => {
   const isLogin = useMemo(() => type === 'login', [type]);
   const isRegister = useMemo(() => type === 'register', [type]);
   const isReset = useMemo(() => type === 'reset', [type]);
@@ -113,14 +118,15 @@ export const Auth = ({ type, updateToken }) => {
   const [notification, setNotification] = useState();
   const [isSubmited, setIsSubmited] = useState(false);
   const navigate = useNavigate();
-
+  
   const onSubmit = (data, helper) => {
     axios
       .post(API + type, data)
       .then((res) => {
         if (!isReset) {
-          updateToken(res.data.plainTextToken);
-          navigate('/dashboard');
+          localStorage.setItem("user_id",res.data.user_id)
+          localStorage.setItem( "access_token" , res.data.token.plainTextToken);
+          navigate('/dashboard')
         } else {
           setNotification(res.data.status);
         }
@@ -174,7 +180,7 @@ export const Auth = ({ type, updateToken }) => {
     <div id="auth">
       <div className="formLayout">
         <h1 children={content.title} />
-        {/* {!isReset && <SocialLogin />} */}
+        {!isReset && <SignIn />}
         <div className="form">
           {form[type].map((item, key) => (
             <TextField
