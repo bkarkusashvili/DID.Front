@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import GoogleButton from 'react-google-button';
 import googleSvg from './img/google.svg';
+import { API } from '../../../../env';
 
 function SignIn() {
     const [loginUrl, setLoginUrl] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/auth', {
+        fetch(API + 'auth', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -22,7 +23,6 @@ function SignIn() {
             .catch((error) => console.error(error));
     }, []);
 
-    // Define inline styles
     const buttonStyle = {
         display: 'flex',
         alignItems: 'center',

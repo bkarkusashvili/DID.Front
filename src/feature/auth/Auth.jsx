@@ -117,6 +117,7 @@ export const Auth = ({ type, updateToken, updateUserId }) => {
   const content = useMemo(() => contents[type], [type]);
   const [notification, setNotification] = useState();
   const [isSubmited, setIsSubmited] = useState(false);
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
   
   const onSubmit = (data, helper) => {
@@ -126,7 +127,20 @@ export const Auth = ({ type, updateToken, updateUserId }) => {
         if (!isReset) {
           localStorage.setItem("user_id",res.data.user_id)
           localStorage.setItem( "access_token" , res.data.token.plainTextToken);
-          navigate('/dashboard')
+
+          if( type == "register"){
+            axios.post(API + 'send-mail', { 
+              email: data.email,
+              type: "registration",
+            })
+            .then((response) => {
+              setMessage(response.data.message);
+            })
+            .catch((error) => {
+              setMessage('Email sending failed');
+            });
+          }
+          window.location.href = '/dashboard'
         } else {
           setNotification(res.data.status);
         }

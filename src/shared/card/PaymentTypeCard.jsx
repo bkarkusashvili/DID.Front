@@ -9,43 +9,31 @@ export const PaymentTypeCard = ({ id, paymentType, name, descriptionText, durati
 
   const amount = duration * price;
 
+
   const justpay = async () => {
-    // Check if a phone number has been entered
-    if (!phoneNumber) {
-      alert('Please enter your phone number');
-      return;
-    }
-
     const product = JSON.parse(localStorage.getItem('product'));
-    const email = 'giorgi@gmail.com';
-
+    const user = JSON.parse(localStorage.getItem('user_data'));
+    const email = user.email;
+  
     try {
-      const response = await axios.post(API + 'justpay', { amount, email,});
+      const response = await axios.post(API + 'justpay', { amount, email });
       window.location.href = response.data.response.response.transactionUrl;
+
+      
+      // Assuming payment is successful and you're redirected back after payment
+  
+      // Triggering backend to update site status
+      
+      
+      // Rest of your code...
     } catch (error) {
       console.error('Error:', error);
       console.log('An error occurred.');
     }
   };
+  
 
-  const subscriptionpay = async () => {
-
-    const product = JSON.parse(localStorage.getItem('product'));
-    const user_data = JSON.parse(localStorage.getItem('user_data'));
-
-    const productId = product.subscription_product_id;
-    const email = user_data.email;
-
-    try {
-      const response = await axios.post(API + 'create-subscription-transactionUrl', {
-        productId,
-        email,
-      });
-      window.location.href = response.data.data.transactionUrl;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   return (
     <div className="box">
@@ -54,13 +42,7 @@ export const PaymentTypeCard = ({ id, paymentType, name, descriptionText, durati
       <div className="description">{descriptionText}</div>
       <div className="pay">
         <button
-          onClick={() => {
-            if (paymentType === 'subscriptionpay') {
-              subscriptionpay();
-            } else if (paymentType === 'justpay') {
-              justpay();
-            }
-          }}
+          onClick={() => {justpay();}}
         >
           Pay
         </button>

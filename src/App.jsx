@@ -3,6 +3,7 @@ import { Mainlayout, PrivateRoute, PublicRoute } from './core';
 import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom';
 import {GoogleCallback} from './feature/auth/components/socialLogin/GoogleCallback.jsx'
 import axios from 'axios';
+import Loading from './shared/Card/Loading.jsx';
 
 import {
   Dashboard,
@@ -80,6 +81,16 @@ function App() {
           }
         />
         <Route
+          path='activate-site'
+          element={
+            <PrivateRoute
+              user={token}
+              children={<Loading token={token} logout={()=>{updateToken(null)}} /> }
+              />
+          }
+          />
+
+        <Route
           path="form/:id"
           element={
             <PrivateRoute user={token} children={<TypeForm token={token} />} />
@@ -144,7 +155,6 @@ function App() {
             />
           }
         />
-        <Route path="/auth/google" element={<GoogleCallback updateToken={updateToken}  updateUserId={updateUserId}  />}></Route>
         <Route
           path="register"
           element={
@@ -152,6 +162,12 @@ function App() {
               user={token}
               children={<Auth type="register" updateToken={updateToken} updateUserId={updateUserId} />}
             />
+          }
+        />
+        <Route
+          path="auth/callback"
+          element={
+            <PublicRoute user={token} children={<GoogleCallback updateUserId={updateUserId} updateToken={updateToken} />} />
           }
         />
         <Route

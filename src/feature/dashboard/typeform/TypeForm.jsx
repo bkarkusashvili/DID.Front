@@ -254,34 +254,34 @@ export const TypeForm = ({ token }) => {
         numberOfFailedRetry: 3
       }
       axios.post(API+'products', { create_product_data: create_product_data } )
-        .then(res => {
+      .then(res => {
 
-          const subscription_product_id = res.data.data.id
-          console.log(res)
-          console.log(res.data.data.id)
+        const subscription_product_id = res.data.data.id
+        console.log(res)
+        console.log(res.data.data.id)
 
-          
-          
-          //წარმატებული საბსქრიბშენ პროდუქტის შექმნის შემდეგ გზავნის მეილს 
-          const user = JSON.parse(localStorage.getItem('user_data'));
-          if (user && user.email) {
-            axios.post(API + 'send-mail', { email: user.email })
-              .then(res => {
-                console.log(res.data['message']);
-              })
-              .catch(error => {
-                console.error('Error sending email:', error);
-              });
-          } else {
-            console.error('User email not found in localStorage.');
-          }
-          axios
-          .post(API + 'site/update/' + id, { data, subscription_product_id }, { headers })
-          .then(() => navigate('/dashboard'));
-        })
-        .catch(error=>{
-          console.error(error)
-        })
+        
+        
+        // წარმატებული საბსქრიბშენ პროდუქტის შექმნის შემდეგ გზავნის მეილს 
+        const user = JSON.parse(localStorage.getItem('user_data'));
+        if (user && user.email) {
+          axios.post(API + 'send-mail', { email: user.email, type: 'fillform' })
+            .then(res => {
+              console.log(res.data['message']);
+            })
+            .catch(error => {
+              console.error('Error sending email:', error);
+            });
+        } else {
+          console.error('User email not found in localStorage.');
+        }
+        axios
+        .post(API + 'site/update/' + id, { data, subscription_product_id }, { headers })
+        .then(() => navigate('/dashboard'));
+      })
+      .catch(error=>{
+        console.error(error)
+      })
     }
   };
     useEffect(() => {

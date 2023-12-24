@@ -37,13 +37,13 @@ export const Card = ({
   };
 
   const paymentType = [
-    {
-      id: "1",
-      paymentType: "subscriptionpay" ,
-      name:"subscription",
-      descriptionText: "some description text",
-      duration:1
-    },
+    // {
+    //   id: "1",
+    //   paymentType: "subscriptionpay" ,
+    //   name:"subscription",
+    //   descriptionText: "some description text",
+    //   duration:1
+    // },
     {
       id: "2",
       paymentType:"justpay" ,

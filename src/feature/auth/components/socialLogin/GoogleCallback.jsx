@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API } from '../../../../env';
 
 export function GoogleCallback( {updateUserId, updateToken}) {
     const [loading, setLoading] = useState(true);
@@ -8,8 +9,11 @@ export function GoogleCallback( {updateUserId, updateToken}) {
     const location = useLocation();
     const navigate = useNavigate();
 
+    console.log("gadmovida")
+
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/auth/callback${location.search}`, {
+        console.log("shemovida")
+        axios.get(API + `auth/callback${location.search}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -21,16 +25,27 @@ export function GoogleCallback( {updateUserId, updateToken}) {
             if (response.data) {
                 updateToken(response.data.access_token);
                 updateUserId(response.data.user.id);
-                navigate('/dashboard')
+                window.location.href = '/dashboard';
             }
+        console.log("daloga")
+
         })
         .catch((error) => {
             console.error('Error fetching data:', error);
             setLoading(false);
+        console.log("daaerora")
+
         });
+
     }, []);
 
+    return(
+        <>
+        loading
+        </>
+    )
 }
+
 
 //axios
 // .post(API + type, data)
