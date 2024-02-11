@@ -124,24 +124,12 @@ export const Auth = ({ type, updateToken, updateUserId }) => {
     axios
       .post(API + type, data)
       .then((res) => {
-        if (!isReset) {
+        console.log(res)
+        try{
           localStorage.setItem("user_id",res.data.user_id)
-          localStorage.setItem( "access_token" , res.data.token.plainTextToken);
-
-          if( type == "register"){
-            axios.post(API + 'send-mail', { 
-              email: data.email,
-              type: "registration",
-            })
-            .then((response) => {
-              setMessage(response.data.message);
-            })
-            .catch((error) => {
-              setMessage('Email sending failed');
-            });
-          }
+          localStorage.setItem( "access_token" , res.data.plainTextToken);
           window.location.href = '/dashboard'
-        } else {
+        } catch {
           setNotification(res.data.status);
         }
       })

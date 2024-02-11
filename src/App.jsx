@@ -60,7 +60,8 @@ function App() {
       })
       .then(() => {
         updateToken(null);
-        updateUserId(null)
+        updateUserId(null);
+        localStorage.removeItem('user_data')
         navigate('/');
       })
       .catch(() => {});
@@ -82,6 +83,15 @@ function App() {
         />
         <Route
           path='activate-site'
+          element={
+            <PrivateRoute
+              user={token}
+              children={<Loading token={token} logout={()=>{updateToken(null)}} /> }
+              />
+          }
+          />
+        <Route
+          path='failed-transaction'
           element={
             <PrivateRoute
               user={token}

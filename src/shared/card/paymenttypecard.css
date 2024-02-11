@@ -1,6 +1,7 @@
 .modal{
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    position: fixed;
     top: 0;
     left: 0;
 }
@@ -96,11 +97,12 @@
       flex-direction: column; /* Stack boxes vertically on smaller screens */
     }
     .modal-content{
-        position: absolute;
+        position: fixed;
+        overflow-y:scroll;
         top: 0;
         left: 0;
         padding:0px;
-        height: max-content;
+        height: 100vh;
         padding-bottom: 80px;
     }
   

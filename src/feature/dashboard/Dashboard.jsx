@@ -66,7 +66,7 @@ export const Dashboard = ({ token, logout }) => {
   }, []);
   useEffect(() => {
     // Fetch user data from the server
-    axios.post(API + 'fetch-user-data', { user_id: user_id },{
+    axios.post(API + 'fetch-user-data',{},{
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(response => {
