@@ -78,34 +78,6 @@ export const Dashboard = ({ token, logout }) => {
         console.error('Error fetching user data:', error);
       });
   }, []);
-
-
-  useEffect(() => {
-    // Get the query parameters from the URL
-    const searchParams = new URLSearchParams(window.location.search);
-    const paymentTransactionId = searchParams.get('payment_transaction_id');
-
-    // Get user data from localStorage
-    const userData = JSON.parse(localStorage.getItem('user_data'));
-
-    if (paymentTransactionId && userData) {
-      const { id: userId, email } = userData;
-      
-      axios.post(API + `save-payment-transaction/${paymentTransactionId}`, {
-        userId, // Send the userId
-        email, // Send the email
-      })
-        .then(response => {
-          // Handle the response from the backend if needed
-          console.log(response.data); // You can log the response to the console
-        })
-        .catch(error => {
-          // Handle errors
-          console.error(error);
-        });
-    }
-  }, []);
-
   
   return (
     <div id="dashboard">

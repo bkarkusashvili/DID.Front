@@ -86,7 +86,7 @@ function App() {
           element={
             <PrivateRoute
               user={token}
-              children={<Loading token={token} logout={()=>{updateToken(null)}} /> }
+              children={<Loading token={token} loadingFor={'activate-site'} logout={()=>{updateToken(null)}} /> }
               />
           }
           />
@@ -95,7 +95,7 @@ function App() {
           element={
             <PrivateRoute
               user={token}
-              children={<Loading token={token} logout={()=>{updateToken(null)}} /> }
+              children={<Loading token={token} loadingFor={'failed-transaction'} logout={()=>{updateToken(null)}} /> }
               />
           }
           />
